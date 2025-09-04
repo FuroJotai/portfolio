@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { motion, type Variants } from "framer-motion"
 
 const title = "Are you ready?"
@@ -27,25 +26,8 @@ const makeVariants = (len: number): Variants => ({
 const CARDS_DELAY = TOTAL_DURATION + PER_LETTER_DURATION + 0.2
 
 export default function Hero() {
-  const [pos, setPos] = useState({ x: 0, y: 0 })
-
   return (
-    <section
-      className="relative min-h-screen h-screen flex flex-col justify-between px-6 py-4 overflow-hidden"
-      onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}
-    >
-      {/* spotlight */}
-      <motion.div
-        className="pointer-events-none absolute top-0 left-0 w-full h-full"
-        style={{
-          background: `radial-gradient(
-            circle 120px at ${pos.x}px ${pos.y}px,
-            rgba(255,255,255,0.07),
-            transparent 70%
-          )`,
-        }}
-      />
-
+    <section className="relative min-h-screen h-screen flex flex-col justify-between px-6 py-4 overflow-hidden">
       {/* Top bar */}
       <header className="flex items-center justify-between relative z-10">
         <div className="text-xl font-bold">LOGO</div>
