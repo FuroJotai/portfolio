@@ -1,123 +1,36 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence, Variants } from "framer-motion"
-import { tabs } from "../data/tabs" // поправь путь если нужно
+import { useEffect, useState } from "react"
+import WorksSectionMobile from "./WorksSectionMobile"
+import WorksSectionLaptop from "./WorksSectionLaptop"
+import WorksSectionDesktop from "./WorksSectionDesktop"
 
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
-}
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false)
 
-const line: Variants = {
-  hidden: { y: "100%" },
-  show: { y: "0%", transition: { duration: 0.7, ease: "easeOut" } },
-}
+  useEffect(() => {
+    const media = window.matchMedia(query)
+    if (media.matches !== matches) {
+      setMatches(media.matches)
+    }
+    const listener = () => setMatches(media.matches)
+    media.addEventListener("change", listener)
+    return () => media.removeEventListener("change", listener)
+  }, [matches, query])
 
-function LineReveal({ text }: { text: React.ReactNode }) {
-  return (
-    <div className="overflow-hidden">
-      <motion.div variants={line}>{text}</motion.div>
-    </div>
-  )
+  return matches
 }
 
 export default function WorksSection() {
-  const [active, setActive] = useState(0)
+  const isMobile = useMediaQuery("(max-width: 899px)")
+  const isLaptop = useMediaQuery("(min-width: 900px) and (max-width: 1029px)")
+  const isDesktop = useMediaQuery("(min-width: 1030px)")
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 80 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.35 }}
-      className="flex w-full h-screen text-white overflow-hidden pt-20"
-    >
-      {tabs.map((tab, i) => {
-        const isActive = i === active
-        return (
-          <motion.div
-            key={tab.id}
-            layout
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`flex border-r border-white/10 overflow-hidden ${
-              isActive ? "flex-[5]" : "w-20"
-            }`}
-          >
-            {/* Sidebar */}
-            <motion.button
-              layout
-              onClick={() => setActive(i)}
-              className={`relative w-20 min-w-[80px] h-full border-r border-white/10 cursor-pointer transition-colors
-                ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}
-            >
-              {/* Цифра сверху */}
-              <span className="absolute top-18 left-1/2 -translate-x-1/2 text-xl font-sora font-bold leading-none">
-                {tab.number}
-              </span>
-              {/* Название прибито вниз */}
-              <span className="absolute bottom-16 left-1/2 -translate-x-1/2 
-                               text-3xl font-sora tracking-widest [writing-mode:vertical-rl] leading-none whitespace-nowrap">
-                {tab.label}
-              </span>
-            </motion.button>
-
-            {/* Контент */}
-            <AnimatePresence mode="wait">
-              {isActive && (
-                <motion.div
-                  key={tab.id}
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="flex-1 p-16 flex flex-col justify-between"
-                >
-                  {/* Заголовок сверху (на уровне цифр) */}
-                  <motion.div
-                    variants={container}
-                    initial="hidden"
-                    animate="show"
-                    className="flex flex-col gap-4"
-                  >
-                    {tab.title.map((lineText, idx) => (
-                      <LineReveal
-                        key={idx}
-                        text={
-                          <span className="text-4xl font-sora font-semibold">
-                            {lineText}
-                          </span>
-                        }
-                      />
-                    ))}
-                  </motion.div>
-
-                  {/* Описание + скрин внизу */}
-                  <div className="flex flex-row gap-12 items-end">
-                    <motion.div
-                      variants={container}
-                      initial="hidden"
-                      animate="show"
-                      className="flex-1 flex flex-col gap-3 text-gray-300 font-sora text-base"
-                    >
-                      {tab.desc.map((lineText, idx) => (
-                        <LineReveal key={idx} text={lineText} />
-                      ))}
-                    </motion.div>
-
-                    <motion.div
-                      variants={line}
-                      className="w-[500px] h-[320px] bg-gray-200 text-black flex items-center justify-center text-2xl font-bold"
-                    >
-                      СКРИН
-                    </motion.div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        )
-      })}
-    </motion.section>
+    <section className="w-full">
+      {isMobile && <WorksSectionMobile />}
+      {isLaptop && <WorksSectionLaptop />}
+      {isDesktop && <WorksSectionDesktop />}
+    </section>
   )
 }
