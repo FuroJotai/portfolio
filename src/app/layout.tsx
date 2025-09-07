@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, Sora } from "next/font/google"
 import "./globals.css"
 import SpotlightBackground from "@/components/SpotlightBackground"
@@ -18,6 +18,12 @@ const sora = Sora({
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "My portfolio website",
+}
+
+// ✅ новый экспорт viewport отдельно
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 }
 
 export default function RootLayout({
