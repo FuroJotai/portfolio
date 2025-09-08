@@ -1,6 +1,8 @@
 import AboutSection from "@/slices/about/ui/AboutSection"
 import Hero from "@/slices/hero/ui/Hero"
 import WorksSection from "@/slices/works/ui/WorksSection"
+import PricingSection from "@/slices/prices/ui/PricingSection"
+import ContactSection from "@/slices/contact/ui/ContactSection"
 
 export default function Home() {
   return (
@@ -8,7 +10,9 @@ export default function Home() {
       <Hero />
       <WorksSection />
       <AboutSection />
-      <div className="h-[1400px]"></div>
+      <PricingSection />  
+      <ContactSection />
+      <div className="h-[700px]"></div>
     </main>
   )
 }

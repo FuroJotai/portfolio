@@ -21,6 +21,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sora), sans-serif;
 }
 
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(25deg);
+  }
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

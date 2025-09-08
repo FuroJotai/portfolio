@@ -66,7 +66,7 @@ export default function AboutSectionDesktop() {
       <div className="col-span-12 lg:col-span-7">
         <div className="sticky top-32">
           <motion.h2
-            className="text-3xl xl:text-4xl font-semibold tracking-tight mb-12"
+            className="text-3xl xl:text-3xl font-semibold tracking-tight mb-12"
             style={{ opacity: headingOpacity }}>
             {about.heading}
           </motion.h2>
