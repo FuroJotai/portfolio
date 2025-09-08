@@ -65,7 +65,7 @@ function PlanCard({
       }}
     >
       {/* Заголовок */}
-      <h3 className="text-sm md:text-lg lg:text-xl font-semibold text-white">
+      <h3 className="text-lg md:text-lg lg:text-xl font-semibold text-white">
         {plan.title}
       </h3>
 
@@ -86,12 +86,12 @@ function PlanCard({
       </div>
 
       {/* Цена */}
-      <p className="mt-6 lg:mt-10 text-2xl md:text-3xl lg:text-2xl font-bold text-teal-300">
+      <p className="mt-6 lg:mt-10 text-lg md:text-3xl lg:text-2xl font-semi-bold text-teal-300">
         {plan.options[selected].price}
       </p>
 
       {/* Фичи */}
-      <ul className="mt-4 space-y-2 text-gray-400 text-xs md:text-sm">
+      <ul className="mt-4 space-y-2 text-gray-400 text-sm md:text-sm">
         {plan.features.map((f) => (
           <li key={f}>• {f}</li>
         ))}
