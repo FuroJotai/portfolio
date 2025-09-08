@@ -3,9 +3,10 @@
 import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { tabs } from "../data/tabs"
+import type { Tab } from "../data/tabs"
 
 // 🔹 Контент аккордеона
-function AccordionItem({ tab, isActive }: { tab: any; isActive: boolean }) {
+function AccordionItem({ tab, isActive }: { tab: Tab; isActive: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
 
@@ -24,7 +25,7 @@ function AccordionItem({ tab, isActive }: { tab: any; isActive: boolean }) {
     >
       <div ref={ref} className="pl-2 pr-4 pb-6">
         <div className="flex flex-col gap-2 mb-3">
-          {tab.title.map((line: string, idx: number) => (
+          {tab.title.map((line, idx) => (
             <span key={idx} className="text-xl font-sora font-semibold">
               {line}
             </span>
@@ -32,7 +33,7 @@ function AccordionItem({ tab, isActive }: { tab: any; isActive: boolean }) {
         </div>
 
         <div className="flex flex-col gap-1 mb-4 text-gray-300 text-sm">
-          {tab.desc.map((line: string, idx: number) => (
+          {tab.desc.map((line, idx) => (
             <span key={idx}>{line}</span>
           ))}
         </div>

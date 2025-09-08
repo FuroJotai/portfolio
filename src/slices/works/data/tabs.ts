@@ -1,4 +1,12 @@
-export const tabs = [
+export type Tab = {
+  id: string
+  number: string
+  label: string
+  title: string[]
+  desc: string[]
+}
+
+export const tabs: Tab[] = [
   {
     id: "webflow",
     number: "01",

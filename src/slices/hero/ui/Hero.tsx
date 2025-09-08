@@ -38,7 +38,8 @@ export default function Hero() {
 
       {/* Center: текст */}
       <div className="flex flex-1 items-center relative z-10">
-        <div className="flex flex-col items-start">
+        {/* 👇 добавляем relative тут */}
+        <div className="flex flex-col items-start relative">
           {/* Подзаголовок */}
           <motion.h2
             initial="hidden"

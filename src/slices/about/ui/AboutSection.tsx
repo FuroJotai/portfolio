@@ -1,22 +1,22 @@
 "use client";
 
 import AboutSectionDesktop from "./AboutSectionDesktop";
-import AboutSectionMobile from "./AboutSectionMobile";  
+import AboutSectionMobile from "./AboutSectionMobile";
+import { useEffect, useState } from "react";
 
 export default function AboutSection() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1280);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <>
-      {/* Десктоп */}
-      <div className="hidden xl:block mt-40">
-        <AboutSectionDesktop />
-      </div>
-
-      {/* Временно рендерим только десктоп, но чтобы не ломало верстку на других брейкпоинтах */}
-      <div className="block xl:hidden">
-        <div className="block xl:hidden">
-        <AboutSectionMobile />
-      </div>
-      </div>
+      {isDesktop ? <AboutSectionDesktop /> : <AboutSectionMobile />}
     </>
   );
 }
