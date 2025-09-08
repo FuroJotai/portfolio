@@ -1,4 +1,13 @@
-export const plans = [
+export type Plan = {
+  title: string
+  options: {
+    label: string
+    price: string
+  }[]
+  features: string[]
+}
+
+export const plans: Plan[] = [
   {
     title: "No-code platforms",
     options: [
@@ -37,7 +46,7 @@ export const plans = [
       "Full UI/UX refresh",
       "Optimized for speed & SEO",
       "Better user experience",
-      "Modern design system", 
+      "Modern design system",
       "Cheaper than building from scratch",
     ],
   },

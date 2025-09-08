@@ -2,33 +2,32 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { plans } from "../data/plans"
+import { plans, type Plan } from "../data/plans"
 
 export default function PricingSection() {
   return (
     <section className="py-20 mt-10 lg:mt-30 flex flex-col items-center justify-center gap-8">
-  <motion.h2
-    className="text-3xl font-bold text-white"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.2 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-  >
-    Pricing
-  </motion.h2>
+      <motion.h2
+        className="text-3xl font-bold text-white"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        Pricing
+      </motion.h2>
 
-  <div className="grid gap-8 md:gap-7 lg:gap-6 w-full max-w-5xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-12 sm:px-6 lg:px-0">
-    {plans.map((plan, i) => (
-      <PlanCard
-        key={plan.title}
-        plan={plan}
-        index={i}
-        isLast={i === plans.length - 1}
-      />
-    ))}
-  </div>
-</section>
-
+      <div className="grid gap-8 md:gap-7 lg:gap-6 w-full max-w-5xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-12 sm:px-6 lg:px-0">
+        {plans.map((plan, i) => (
+          <PlanCard
+            key={plan.title}
+            plan={plan}
+            index={i}
+            isLast={i === plans.length - 1}
+          />
+        ))}
+      </div>
+    </section>
   )
 }
 
@@ -37,7 +36,7 @@ function PlanCard({
   index,
   isLast,
 }: {
-  plan: any
+  plan: Plan
   index: number
   isLast: boolean
 }) {
@@ -72,7 +71,7 @@ function PlanCard({
 
       {/* Переключатель */}
       <div className="flex gap-2 mt-3 lg:mt-4 bg-gray-900 rounded-lg p-1">
-        {plan.options.map((opt: any, i: number) => (
+        {plan.options.map((opt, i) => (
           <button
             key={opt.label}
             onClick={() => setSelected(i)}
@@ -93,7 +92,7 @@ function PlanCard({
 
       {/* Фичи */}
       <ul className="mt-4 space-y-2 text-gray-400 text-xs md:text-sm">
-        {plan.features.map((f: string) => (
+        {plan.features.map((f) => (
           <li key={f}>• {f}</li>
         ))}
       </ul>
