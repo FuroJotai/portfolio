@@ -31,7 +31,7 @@ export default function WorksSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.35 }}
-      className="relative flex w-full h-screen text-white overflow-hidden pt-20 "
+      className="relative flex w-full h-[clamp(800px,95vh,1400px)] text-white overflow-hidden pt-20 "
     >
       {tabs.map((tab, i) => {
         const isActive = i === active
@@ -98,7 +98,7 @@ export default function WorksSection() {
                       variants={container}
                       initial="hidden"
                       animate="show"
-                      className="flex-1 flex flex-col gap-3 text-gray-300 font-sora text-[clamp(16px,1vw,22px)] 3xl:[clamp(32px,10vw,40px)]"
+                      className="flex-1 flex flex-col gap-3 text-gray-300 font-sora text-[clamp(24px,1.5vw,32px)]"
                     >
                       {tab.desc.map((lineText, idx) => (
                         <LineReveal key={idx} text={lineText} />
@@ -107,7 +107,7 @@ export default function WorksSection() {
 
                     <motion.div
                       variants={line}
-                      className="w-[clamp(500px,36vw,1100px)] h-[clamp(300px,24vw,700px)] bg-gray-200 text-black flex items-center justify-center text-2xl font-bold"
+                      className="w-[clamp(900px,36vw,1300px)] h-[clamp(600px,24vw,900px)] bg-gray-200 text-black flex items-center justify-center text-2xl font-bold"
                     >
                       СКРИН
                     </motion.div>

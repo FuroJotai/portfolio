@@ -27,7 +27,11 @@ const CARDS_DELAY = TOTAL_DURATION + PER_LETTER_DURATION + 0.2
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex flex-col justify-between px-6 py-4 overflow-hidden">
+    <section className="
+    relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden
+    3xl:min-h-[min(100svh,940px)]
+    4xl:min-h-[min(100svh,900px)]
+  ">
       {/* Top bar */}
       <header className="flex items-center justify-between relative z-10">
         <div className="text-xl font-bold">LOGO</div>
@@ -44,7 +48,7 @@ export default function Hero() {
           <motion.h2
             initial="hidden"
             animate="visible"
-            className="text-lg sm:text-xl text-gray-400 mb-4 flex flex-wrap"
+            className="lg:text-[clamp(32px,1vw,140px)] text-gray-400 mb-4 flex flex-wrap"
           >
             {lettersSubtitle.map((char, i) => (
               <span key={`sub-${i}`} className="inline-block overflow-hidden">
@@ -67,7 +71,7 @@ export default function Hero() {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-5xl sm:text-7xl md:text-8xl font-bold flex flex-wrap leading-tight text-gray-300"
+            className=" lg:text-[clamp(72px,8vw,240px)] font-bold flex flex-wrap leading-tight text-gray-300"
           >
             {lettersTitle.map((char, i) => (
               <span key={`ttl-${i}`} className="inline-block overflow-hidden">
@@ -97,14 +101,17 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: CARDS_DELAY + i * 0.25 }}
             whileHover="hover"
-            className="relative flex-1 py-8 text-center 
-                       bg-white/5 backdrop-blur-md 
-                       border border-white/20 cursor-pointer 
-                       text-white transition-colors duration-300 
-                       hover:border-white/40"
+            className="relative flex-1 
+             py-[clamp(16px,2vw,48px)]  /* высота растет */
+             px-[clamp(12px,2vw,32px)]  /* ширина тоже */
+             text-center 
+             bg-white/5 backdrop-blur-md 
+             border border-white/20 cursor-pointer 
+             text-white transition-colors duration-300 
+             hover:border-white/40"
           >
             <motion.span
-              className="text-base font-medium block tracking-wider"
+              className="text-base font-medium text-[clamp(14px,1.2vw,24px)] block tracking-wider"
               variants={{
                 hover: {
                   scale: 1.04,

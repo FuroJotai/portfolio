@@ -3,9 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* html, body { */
-  /* min-width: 1024px; ⚡ фиксируем нижнюю границу для десктопа */
-/* } */
+
 
 html {
   overflow-y: auto;        /* скролл появляется только если контента больше экрана */
@@ -101,7 +99,30 @@ h1, h2, h3, h4, h5, h6 {
   --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
   --sidebar-border: oklch(0.928 0.006 264.531);
   --sidebar-ring: oklch(0.707 0.022 261.325);
+
+  --step-0: clamp(16px, 1vw + 12px, 22px);   /* body text ~18-20px на 1920px */
+
+  --step-0: clamp(16px, 0.9vw, 20px);  
+  /* На 1920px = ~17px, потолок 20px */
+
+  /* h4 */
+  --step-1: clamp(20px, 1.5vw, 32px);  
+  /* На 1920px = 28px, потолок 32px */
+
+  /* h3 */
+  --step-2: clamp(28px, 2.2vw, 48px);  
+  /* На 1920px = 42px, потолок 48px */
+
+  /* h2 */
+  --step-3: clamp(72px, 3.5vw, 120px);  
+  /* На 1920px = 67px ≈ Tailwind 7xl, потолок 72px */
+
+  /* h1 */
+  --step-4: clamp(72px, 10vw, 120px);  
+  /* На 1920px = 96px (8xl), на 4K = потолок 120px */
 }
+
+
 
 .dark {
   --background: oklch(0.13 0.028 261.692);

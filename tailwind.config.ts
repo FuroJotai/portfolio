@@ -1,15 +1,26 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
-  darkMode: "class", // включаем тёмную тему по классу
+  darkMode: "class",
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+  "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+  "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        "3xl": "1920px", // FullHD+
+        "4xl": "2560px", // QHD
+        "5xl": "3840px", // 4K
+      },
+      maxWidth: {
+        content: "1400px",
+        wide: "1600px",
+        ultra: "1800px",
+      },
+    },
   },
   plugins: [],
 }

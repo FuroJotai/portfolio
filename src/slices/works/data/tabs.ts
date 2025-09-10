@@ -23,7 +23,7 @@ export const tabs: Tab[] = [
     id: "code",
     number: "02",
     label: "Clean code",
-    title: ["Clean code for complex projects"],
+    title: ["Clean code for complex", "projects"],
     desc: [
       "I rely on modern frameworks like Next.js and React to build scalable, maintainable applications with clear architecture.",
       "Every component I write follows clean code principles: readable, reusable, and easy to extend when new features are needed.",
@@ -35,7 +35,7 @@ export const tabs: Tab[] = [
     id: "creativity",
     number: "03",
     label: "Creativity",
-    title: ["Refreshing outdated websites"],
+    title: ["Refreshing outdated", "websites"],
     desc: [
       "I specialize in reworking outdated websites, turning cluttered or uninspired designs into modern, user-friendly experiences.",
       "A redesign is not only about visuals — it’s about creating a clear structure and improving how users interact with the product.",

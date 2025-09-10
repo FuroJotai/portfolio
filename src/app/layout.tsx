@@ -37,7 +37,11 @@ export default function RootLayout({
         className={`${inter.variable} ${sora.variable} antialiased bg-background text-foreground`}
       >
         <SpotlightBackground /> {/* ✅ глобальный фон */}
-        {children}
+
+        {/* 🔹 Глобальный контейнер */}
+        <div className="mx-auto w-full max-w-none 3xl:max-w-wide 4xl:max-w-ultra ">
+          {children}
+        </div>
       </body>
     </html>
   )
