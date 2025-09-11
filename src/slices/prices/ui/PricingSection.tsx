@@ -6,12 +6,15 @@ import { plans, type Plan } from "../data/plans"
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-20 mt-10 lg:mt-30 flex flex-col items-center justify-center gap-8">
+    <section
+      id="pricing"
+      className="py-20 mt-10 lg:mt-30 flex flex-col items-center justify-center gap-8"
+    >
       <motion.h2
         className="text-3xl font-bold text-white"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         Pricing
@@ -57,19 +60,17 @@ function PlanCard({
       `}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{
         delay: index * 0.2,
         duration: 0.6,
         ease: "easeOut",
       }}
     >
-      {/* Заголовок */}
       <h3 className="text-lg md:text-lg lg:text-xl font-semibold text-white">
         {plan.title}
       </h3>
 
-      {/* Переключатель */}
       <div className="flex gap-2 mt-3 lg:mt-4 bg-gray-900 rounded-lg p-1">
         {plan.options.map((opt, i) => (
           <button
@@ -77,7 +78,11 @@ function PlanCard({
             onClick={() => setSelected(i)}
             className={`
               flex-1 px-3 py-1 text-xs md:text-sm lg:text-md rounded-md transition cursor-pointer
-              ${selected === i ? "bg-teal-500 text-black font-medium" : "text-gray-400 hover:text-white"}
+              ${
+                selected === i
+                  ? "bg-teal-500 text-black font-medium"
+                  : "text-gray-400 hover:text-white"
+              }
             `}
           >
             {opt.label}
@@ -85,12 +90,10 @@ function PlanCard({
         ))}
       </div>
 
-      {/* Цена */}
       <p className="mt-6 lg:mt-10 text-lg md:text-3xl lg:text-2xl font-semi-bold text-teal-300">
         {plan.options[selected].price}
       </p>
 
-      {/* Фичи */}
       <ul className="mt-4 space-y-2 text-gray-400 text-sm md:text-sm">
         {plan.features.map((f) => (
           <li key={f}>• {f}</li>

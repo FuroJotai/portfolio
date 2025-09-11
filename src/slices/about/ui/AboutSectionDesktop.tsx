@@ -16,7 +16,7 @@ export default function AboutSectionDesktop() {
 
   // линия
   const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const lineOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0]);
+  const lineOpacity = useTransform(scrollYProgress, [0.95, 1], [1, 0]);
 
   // заголовок
   const headingOpacity = useTransform(scrollYProgress, [0.18, 0.22], [0, 1]);
@@ -29,7 +29,6 @@ export default function AboutSectionDesktop() {
     <section
       id="about"
       ref={sectionRef}
-      
       className="relative mx-auto max-w-7xl px-6 lg:px-8 min-h-[350vh]"
     >
       {/* Линия фиксирована сверху */}

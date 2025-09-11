@@ -5,7 +5,7 @@ import HeroMobile from "./HeroMobile"
 
 export default function Hero() {
   return (
-    <>
+    <section id="hero" className="relative min-h-screen h-screen">
       {/* 👇 Показываем только на мобилке */}
       <div className="block md:hidden">
         <HeroMobile />
@@ -15,6 +15,6 @@ export default function Hero() {
       <div className="hidden md:block">
         <HeroDesktop />
       </div>
-    </>
+    </section>
   )
 }
