@@ -1,6 +1,8 @@
 "use client"
 
 import { motion, type Variants } from "framer-motion"
+import { scrollToSection } from "../utils/scroll" // 👈 тот же хелпер, что и в десктопе
+import { contactButtonClasses } from "../utils/buttonStyles"
 
 const title = "Are you ready?"
 const subtitle = "Well — Frontend Developer"
@@ -25,13 +27,22 @@ const makeVariants = (len: number): Variants => ({
 
 const CARDS_DELAY = TOTAL_DURATION + PER_LETTER_DURATION + 0.2
 
+const menuItems = [
+  { label: "My Projects", target: "works" },
+  { label: "Pricing", target: "pricing" },
+  { label: "About Me", target: "about" },
+]
+
 export default function HeroMobile() {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col px-4 py-4 overflow-hidden">
       {/* Top bar */}
       <header className="flex items-center justify-between relative z-10 mb-8">
         <div className="text-lg font-bold">LOGO</div>
-        <button className="px-3 py-2 bg-white text-black rounded-lg text-sm hover:bg-gray-200 transition-colors">
+        <button
+          onClick={() => scrollToSection("contact")}
+          className={contactButtonClasses}
+        >
           Contact
         </button>
       </header>
@@ -51,10 +62,7 @@ export default function HeroMobile() {
                   variants={makeVariants(lettersSubtitle.length)}
                   custom={i}
                   className="inline-block"
-                  whileHover={{
-                    color: "#ffffff",
-                    transition: { duration: 0.2 },
-                  }}
+                  whileHover={{ color: "#ffffff", transition: { duration: 0.2 } }}
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
@@ -74,10 +82,7 @@ export default function HeroMobile() {
                   variants={makeVariants(lettersTitle.length)}
                   custom={i}
                   className="inline-block"
-                  whileHover={{
-                    color: "#ffffff",
-                    transition: { duration: 0.2 },
-                  }}
+                  whileHover={{ color: "#ffffff", transition: { duration: 0.2 } }}
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
@@ -86,11 +91,12 @@ export default function HeroMobile() {
           </motion.h1>
         </div>
 
-        {/* Меню ближе к тексту */}
+        {/* Меню */}
         <nav className="flex flex-col w-full gap-4">
-          {["My Projects", "Pricing", "About Me"].map((item, i) => (
+          {menuItems.map((item, i) => (
             <motion.div
-              key={item}
+              key={item.label}
+              onClick={() => scrollToSection(item.target)} // 👈 обычный скролл
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: CARDS_DELAY + i * 0.25 }}
@@ -111,7 +117,7 @@ export default function HeroMobile() {
                   },
                 }}
               >
-                {item}
+                {item.label}
               </motion.span>
             </motion.div>
           ))}

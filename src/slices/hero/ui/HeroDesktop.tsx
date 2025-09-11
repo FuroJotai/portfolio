@@ -1,6 +1,8 @@
 "use client"
 
 import { motion, type Variants } from "framer-motion"
+import { scrollToSection } from "../utils/scroll"
+import { contactButtonClasses } from "../utils/buttonStyles"
 
 const title = "Are you ready?"
 const subtitle = "Well — Frontend Developer"
@@ -25,24 +27,33 @@ const makeVariants = (len: number): Variants => ({
 
 const CARDS_DELAY = TOTAL_DURATION + PER_LETTER_DURATION + 0.2
 
-export default function Hero() {
-  return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden
-                        3xl:min-h-[min(100svh,940px)] 4xl:min-h-[min(100svh,900px)]">
-      {/* Top bar */}
-      <header className="flex items-center justify-between relative z-10">
-        <div className="text-xl font-bold cursor-pointer" >LOGO</div>
+// 🔹 меню
+const menuItems = [
+  { label: "My Projects", target: "works", special: false },
+  { label: "About Me", target: "about", special: true },
+  { label: "Pricing", target: "pricing", special: false },
+]
 
-        <button className="px-[clamp(14px,1.6vw,28px)] py-[clamp(8px,0.9vw,20px)] text-[clamp(12px,1.05vw,42px)]
-                          leading-none font-medium border border-white/40 rounded-lg transition-colors cursor-pointer duration-300 
-                          hover:bg-[#0a0f1c]/60 hover:border-white/60">
-                          Contact me 
+export default function HeroDesktop() {
+  return (
+    <section
+      id="hero"
+      className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden"
+    >
+      {/* 🔹 Верхняя панель */}
+      <header className="flex items-center justify-between relative z-10">
+        <div className="text-xl font-bold cursor-pointer">LOGO</div>
+
+        <button
+          onClick={() => scrollToSection("contact", true)} // 👈 Contact = special
+          className={contactButtonClasses}
+        >
+          Contact me
         </button>
       </header>
 
-      {/* Center: текст */}
+      {/* 🔹 Центр: текст */}
       <div className="flex flex-1 items-center relative z-10">
-        {/* 👇 добавляем relative тут */}
         <div className="flex flex-col items-start relative">
           {/* Подзаголовок */}
           <motion.h2
@@ -56,10 +67,7 @@ export default function Hero() {
                   variants={makeVariants(lettersSubtitle.length)}
                   custom={i}
                   className="inline-block"
-                  whileHover={{
-                    color: "#ffffff",
-                    transition: { duration: 0.2 },
-                  }}
+                  whileHover={{ color: "#ffffff", transition: { duration: 0.2 } }}
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
@@ -71,7 +79,7 @@ export default function Hero() {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className=" lg:text-[clamp(72px,8vw,240px)] font-bold flex flex-wrap leading-tight text-gray-300"
+            className="lg:text-[clamp(72px,8vw,240px)] font-bold flex flex-wrap leading-tight text-gray-300"
           >
             {lettersTitle.map((char, i) => (
               <span key={`ttl-${i}`} className="inline-block overflow-hidden">
@@ -79,10 +87,7 @@ export default function Hero() {
                   variants={makeVariants(lettersTitle.length)}
                   custom={i}
                   className="inline-block"
-                  whileHover={{
-                    color: "#ffffff",
-                    transition: { duration: 0.2 },
-                  }}
+                  whileHover={{ color: "#ffffff", transition: { duration: 0.2 } }}
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
@@ -92,23 +97,23 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom menu */}
+      {/* 🔹 Нижнее меню */}
       <nav className="flex w-full relative z-10">
-        {["My Projects", "Pricing", "About Me"].map((item, i) => (
+        {menuItems.map((item, i) => (
           <motion.div
-            key={item}
+            key={item.label}
+            onClick={() => scrollToSection(item.target, item.special)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: CARDS_DELAY + i * 0.25 }}
             whileHover="hover"
             className="relative flex-1 
-             py-[clamp(16px,2vw,48px)]  /* высота растет */
-             px-[clamp(12px,2vw,32px)]  /* ширина тоже */
-             text-center 
-             bg-white/5 backdrop-blur-md 
-             border border-white/20 cursor-pointer 
-             text-white transition-colors duration-300 
-             hover:border-white/40"
+                       py-[clamp(16px,2vw,48px)] 
+                       px-[clamp(12px,2vw,32px)]
+                       text-center bg-white/5 backdrop-blur-md 
+                       border border-white/20 cursor-pointer 
+                       text-white transition-colors duration-300 
+                       hover:border-white/40"
           >
             <motion.span
               className="text-base font-medium text-[clamp(14px,1.2vw,24px)] block tracking-wider"
@@ -121,7 +126,7 @@ export default function Hero() {
               }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              {item}
+              {item.label}
             </motion.span>
           </motion.div>
         ))}
