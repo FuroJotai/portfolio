@@ -6,7 +6,7 @@ import { plans, type Plan } from "../data/plans"
 
 export default function PricingSection() {
   return (
-    <section className="py-20 mt-10 lg:mt-30 flex flex-col items-center justify-center gap-8">
+    <section id="pricing" className="py-20 mt-10 lg:mt-30 flex flex-col items-center justify-center gap-8">
       <motion.h2
         className="text-3xl font-bold text-white"
         initial={{ opacity: 0, y: 20 }}

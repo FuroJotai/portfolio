@@ -41,7 +41,7 @@ export default function ContactSectionMobile() {
   }, [submitted])
 
   return (
-    <section ref={ref} className="py-20 mt-30 flex items-center justify-center">
+    <section id="contact" ref={ref} className="py-20 mt-30 flex items-center justify-center">
       <motion.div
         style={{ opacity: sectionOpacity }}
         className="flex flex-col items-center gap-6 w-full px-4"

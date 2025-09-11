@@ -27,16 +27,16 @@ const CARDS_DELAY = TOTAL_DURATION + PER_LETTER_DURATION + 0.2
 
 export default function Hero() {
   return (
-    <section className="
-    relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden
-    3xl:min-h-[min(100svh,940px)]
-    4xl:min-h-[min(100svh,900px)]
-  ">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden
+                        3xl:min-h-[min(100svh,940px)] 4xl:min-h-[min(100svh,900px)]">
       {/* Top bar */}
       <header className="flex items-center justify-between relative z-10">
-        <div className="text-xl font-bold">LOGO</div>
-        <button className="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition-colors">
-          Contact me
+        <div className="text-xl font-bold cursor-pointer" >LOGO</div>
+
+        <button className="px-[clamp(14px,1.6vw,28px)] py-[clamp(8px,0.9vw,20px)] text-[clamp(12px,1.05vw,42px)]
+                          leading-none font-medium border border-white/40 rounded-lg transition-colors cursor-pointer duration-300 
+                          hover:bg-[#0a0f1c]/60 hover:border-white/60">
+                          Contact me 
         </button>
       </header>
 

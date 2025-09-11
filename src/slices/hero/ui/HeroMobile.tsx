@@ -27,7 +27,7 @@ const CARDS_DELAY = TOTAL_DURATION + PER_LETTER_DURATION + 0.2
 
 export default function HeroMobile() {
   return (
-    <section className="relative min-h-screen flex flex-col px-4 py-4 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col px-4 py-4 overflow-hidden">
       {/* Top bar */}
       <header className="flex items-center justify-between relative z-10 mb-8">
         <div className="text-lg font-bold">LOGO</div>

@@ -54,7 +54,7 @@ export default function ContactSection() {
   }, [submitted])
 
   return (
-    <section ref={ref} className="relative h-[3500px] mt-20">
+    <section id="contact" ref={ref} className="relative h-[3500px] mt-20">
       <div className="sticky top-5 h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-8 max-w-[1000px] w-full relative">
           {!submitted ? (
