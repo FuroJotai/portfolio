@@ -1,9 +1,9 @@
 import AboutSection from "@/slices/about/ui/AboutSection"
 import Hero from "@/slices/hero/ui/Hero"
 import WorksSection from "@/slices/works/ui/WorksSection"
-import PricingSection from "@/slices/prices/ui/PricingSection"
 import ContactSection from "@/slices/contact/ui/ContactSection"
 import BackToTopButton from "@/components/BackToTopButton"
+import Pricing from "@/slices/prices/ui/Pricing"
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Hero />
       <WorksSection />
       <AboutSection />
-      <PricingSection />  
+      <Pricing />
       <ContactSection />
       <BackToTopButton />
       <div className="h-[700px]"></div>
