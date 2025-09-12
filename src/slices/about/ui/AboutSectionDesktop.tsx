@@ -29,7 +29,7 @@ export default function AboutSectionDesktop() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative mx-auto max-w-7xl px-6 lg:px-8 min-h-[350vh]"
+      className="relative mx-auto max-w-7xl px-6 lg:px-8 min-h-[250vh]"
     >
       {/* Линия фиксирована сверху */}
       <motion.div
