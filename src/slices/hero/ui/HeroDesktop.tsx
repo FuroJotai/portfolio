@@ -4,8 +4,8 @@ import { motion, type Variants } from "framer-motion"
 import { scrollToSection } from "../utils/scroll"
 import { contactButtonClasses } from "../utils/buttonStyles"
 
-const title = "Are you ready?"
-const subtitle = "Well — Frontend Developer"
+const title = "Across Pixels"
+const subtitle = "web creative studio"
 
 const lettersTitle = title.split("")
 const lettersSubtitle = subtitle.split("")
