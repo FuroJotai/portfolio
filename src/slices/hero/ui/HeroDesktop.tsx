@@ -5,7 +5,7 @@ import { scrollToSection } from "../utils/scroll"
 import { contactButtonClasses } from "../utils/buttonStyles"
 
 const title = "Across Pixels"
-const subtitle = "web creative studio"
+const subtitle = "creative web studio"
 
 const lettersTitle = title.split("")
 const lettersSubtitle = subtitle.split("")
@@ -41,11 +41,19 @@ export default function HeroDesktop() {
     >
       {/* 🔹 Верхняя панель */}
       <header className="flex items-center justify-between relative z-10">
-        <div className="text-xl font-bold cursor-pointer">LOGO</div>
+        <div
+          className="cursor-pointer font-bold leading-none 
+                     text-[clamp(20px,1.8vw,48px)]"
+        >
+          LOGO
+        </div>
 
         <button
           onClick={() => scrollToSection("contact", true)} // 👈 Contact = special
-          className={contactButtonClasses}
+          className={`${contactButtonClasses} 
+                      text-[clamp(14px,1.2vw,28px)] 
+                      px-[clamp(14px,1.5vw,36px)] 
+                      py-[clamp(6px,0.8vw,18px)]`}
         >
           Contact me
         </button>
@@ -58,7 +66,10 @@ export default function HeroDesktop() {
           <motion.h2
             initial="hidden"
             animate="visible"
-            className="lg:text-[clamp(32px,1vw,140px)] text-gray-400 mb-4 flex flex-wrap"
+            className="lg:text-[clamp(28px,1.8vw,64px)] 
+                       text-gray-400 
+                       mb-[clamp(8px,0.8vh,16px)] 
+                       flex flex-wrap"
           >
             {lettersSubtitle.map((char, i) => (
               <span key={`sub-${i}`} className="inline-block overflow-hidden">
@@ -78,7 +89,9 @@ export default function HeroDesktop() {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="lg:text-[clamp(72px,8vw,240px)] font-bold flex flex-wrap leading-tight text-gray-300"
+            className="lg:text-[clamp(72px,8vw,240px)] 
+                       font-bold flex flex-wrap 
+                       leading-[0.95] text-gray-300"
           >
             {lettersTitle.map((char, i) => (
               <span key={`ttl-${i}`} className="inline-block overflow-hidden">
@@ -115,7 +128,9 @@ export default function HeroDesktop() {
                        hover:border-white/40"
           >
             <motion.span
-              className="text-base font-medium text-[clamp(14px,1.2vw,24px)] block tracking-wider"
+              className="text-base font-medium 
+                         text-[clamp(14px,1.2vw,24px)] 
+                         block tracking-wider"
               variants={{
                 hover: {
                   scale: 1.04,

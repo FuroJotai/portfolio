@@ -74,7 +74,7 @@ export default function ContactSection() {
               {/* Форма */}
               <form
                 onSubmit={handleSubmit}
-                className="relative w-full max-w-[clamp(200px,30vw,300px)] flex flex-col items-center"
+                className="relative w-full max-w-[clamp(400px,30vw,500px)] flex flex-col items-center"
               >
                 {/* Let's / Create */}
                 <div className="absolute inset-0 flex justify-between items-center pointer-events-none">

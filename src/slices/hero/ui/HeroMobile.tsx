@@ -41,7 +41,12 @@ export default function HeroMobile() {
         <div className="text-lg font-bold">LOGO</div>
         <button
           onClick={() => scrollToSection("contact")}
-          className={contactButtonClasses}
+          className="rounded-lg text-white 
+               text-[clamp(14px,2vw16px)] 
+               font-medium 
+               px-[clamp(12px,1vw,16px)] 
+               py-[clamp(8px,1vw,12px)] 
+               border border-white/40"
         >
           Contact
         </button>

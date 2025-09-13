@@ -8,8 +8,8 @@ export const scrollToSection = (id: string, special = false) => {
   let target = section.getBoundingClientRect().top + window.scrollY
 
   if (special) {
-    // прокрутка почти до конца секции (95%)
-    target += section.offsetHeight * 0.75
+    // прокрутка почти до конца секции (65%)
+    target += section.offsetHeight * 0.65
   }
 
   window.scrollTo({

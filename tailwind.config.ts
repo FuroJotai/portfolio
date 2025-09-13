@@ -14,11 +14,13 @@ const config: Config = {
         "3xl": "1920px", // FullHD+
         "4xl": "2560px", // QHD
         "5xl": "3840px", // 4K
+        "6xl": "5120px", // 5K
       },
       maxWidth: {
         content: "1400px",
         wide: "1600px",
         ultra: "1800px",
+         mega: "2200px",
       },
     },
   },
