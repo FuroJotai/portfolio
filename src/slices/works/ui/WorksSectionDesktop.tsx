@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import WorksModal from "./WorksModal"
 import { motion, AnimatePresence, Variants } from "framer-motion"
-import { tabs } from "../data/tabs" // поправь путь если нужно
+import { tabs } from "../data/tabs"
 
 const container: Variants = {
   hidden: {},
@@ -24,6 +25,7 @@ function LineReveal({ text }: { text: React.ReactNode }) {
 
 export default function WorksSection() {
   const [active, setActive] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <motion.section
@@ -74,7 +76,7 @@ export default function WorksSection() {
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="flex-1 p-16 flex flex-col justify-between"
                 >
-                  {/* Заголовок сверху (на уровне цифр) */}
+                  {/* Заголовок */}
                   <motion.div
                     variants={container}
                     initial="hidden"
@@ -93,7 +95,7 @@ export default function WorksSection() {
                     ))}
                   </motion.div>
 
-                  {/* Описание + скрин внизу */}
+                  {/* Описание + скрин */}
                   <div className="flex flex-row gap-12 items-end">
                     <motion.div
                       variants={container}
@@ -108,7 +110,9 @@ export default function WorksSection() {
 
                     <motion.div
                       variants={line}
-                      className="w-[clamp(500px,36vw,1100px)] h-[clamp(300px,24vw,700px)] bg-gray-200 text-black flex items-center justify-center text-2xl font-bold"
+                      className="w-[clamp(500px,36vw,1100px)] h-[clamp(300px,24vw,700px)] bg-gray-200 cursor-pointer
+                                text-black flex items-center justify-center text-2xl font-bold"
+                      onClick={() => setIsModalOpen(true)}
                     >
                       СКРИН
                     </motion.div>
@@ -119,6 +123,13 @@ export default function WorksSection() {
           </motion.div>
         )
       })}
+
+      {/* 👉 одна модалка для всей секции */}
+      <WorksModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        projects={tabs[active].projects}
+      />
     </motion.section>
   )
 }
