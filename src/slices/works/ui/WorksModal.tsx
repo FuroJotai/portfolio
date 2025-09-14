@@ -33,8 +33,8 @@ export default function WorksModal({ isOpen, onClose, projects }: WorksModalProp
             transition={{ duration: 0.3 }}
             className="
               relative 
-              w-[92%] sm:w-[85%] md:w-[70%] 
-              max-w-3xl 2xl:max-w-[1600px] 
+              w-[92%] sm:w-[85%] md:w-[85%] 
+              max-w-3xl 2xl:max-w-[1400px] 
               bg-white/90 rounded-xl border border-gray-300 shadow-xl 
               p-6 sm:p-8 2xl:p-12
             "
@@ -49,9 +49,9 @@ export default function WorksModal({ isOpen, onClose, projects }: WorksModalProp
 
             {/* контент модалки */}
             {projects && projects.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 2xl:gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 2xl:gap-8">
                 {projects.map((proj, idx) => (
-                  <div key={idx} className="flex flex-col gap-3">
+                  <div key={idx} className="flex flex-col gap-2">
                     <a
                       href={proj.url}
                       target="_blank"
@@ -62,19 +62,19 @@ export default function WorksModal({ isOpen, onClose, projects }: WorksModalProp
                         src={proj.img}
                         alt={proj.desc}
                         className="w-full 
-                                   h-48 sm:h-56 
-                                   2xl:h-[400px] 
+                                   h-32 sm:h-40 md:h-42 
+                                   2xl:h-[300px] 
                                    object-contain"
                       />
                     </a>
-                    <p className="text-sm sm:text-base 2xl:text-xl text-gray-700">
+                    <p className="text-sm sm:text-base md:text-lg 2xl:text-xl lg:mt-10 text-gray-700">
                       {proj.desc}
                     </p>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-gray-600 text-center text-sm sm:text-base 2xl:text-xl">
+              <p className="text-gray-600 text-center text-sm sm:text-base md:text-lg 2xl:text-xl">
                 No projects yet for this tab.
               </p>
             )}

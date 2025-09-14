@@ -125,7 +125,7 @@ export default function HeroDesktop() {
                        text-center bg-white/5 backdrop-blur-md 
                        border border-white/20 cursor-pointer 
                        text-white transition-colors duration-300 
-                       hover:border-white/40"
+                       hover:border-white/25"
           >
             <motion.span
               className="text-base font-medium 

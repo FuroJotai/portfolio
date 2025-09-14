@@ -29,7 +29,7 @@ export const tabs: Tab[] = [
       {
         img: "/works/site_1.png",
         url: "https://www.residence-du-leman.ch/residence",
-        desc: "Redesign of a website for a nursing home in Switzerland. A stylish design with carefully chosen animations, showing how such effects can also be implemented in Webflow.",
+        desc: "A complete website build for a nursing home in Switzerland. I was responsible for creating pages, designing new elements, and implementing custom animations to achieve a stylish, modern look. The project was developed under mentorship, where I honed my skills in advanced Webflow techniques and complex interactions.",
       },
       {
         img: "/works/site_2.png",
