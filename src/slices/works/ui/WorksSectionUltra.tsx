@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence, Variants } from "framer-motion"
-import { tabs } from "../data/tabs" // поправь путь если нужно
+import WorksModal from "./WorksModal"
+import { tabs } from "../data/tabs"
 
 const container: Variants = {
   hidden: {},
@@ -22,8 +23,9 @@ function LineReveal({ text }: { text: React.ReactNode }) {
   )
 }
 
-export default function WorksSection() {
+export default function WorksSectionUltra() {
   const [active, setActive] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <motion.section
@@ -52,11 +54,9 @@ export default function WorksSection() {
               className={`relative w-20 min-w-[80px] h-full border-r border-white/10 cursor-pointer transition-colors
                 ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}
             >
-              {/* Цифра сверху */}
               <span className="absolute top-19 left-1/2 -translate-x-1/2 text-[clamp(20px,2vw,40px)] font-sora font-bold leading-none">
                 {tab.number}
               </span>
-              {/* Название прибито вниз */}
               <span className="absolute bottom-16 left-1/2 -translate-x-1/2 
                                text-[clamp(28px,2vw,60px)] font-sora tracking-widest [writing-mode:vertical-rl] leading-none whitespace-nowrap">
                 {tab.label}
@@ -74,7 +74,7 @@ export default function WorksSection() {
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="flex-1 p-16 flex flex-col justify-between"
                 >
-                  {/* Заголовок сверху (на уровне цифр) */}
+                  {/* Заголовок */}
                   <motion.div
                     variants={container}
                     initial="hidden"
@@ -93,7 +93,7 @@ export default function WorksSection() {
                     ))}
                   </motion.div>
 
-                  {/* Описание + скрин внизу */}
+                  {/* Описание + скрин */}
                   <div className="flex flex-row gap-12 items-end">
                     <motion.div
                       variants={container}
@@ -108,7 +108,8 @@ export default function WorksSection() {
 
                     <motion.div
                       variants={line}
-                      className="w-[clamp(900px,36vw,1300px)] h-[clamp(600px,24vw,900px)] bg-gray-200 text-black flex items-center justify-center text-2xl font-bold"
+                      onClick={() => setIsModalOpen(true)}
+                      className="w-[clamp(900px,36vw,1300px)] h-[clamp(600px,24vw,900px)] bg-gray-200 text-black flex items-center justify-center text-2xl font-bold cursor-pointer hover:scale-95 transition-transform"
                     >
                       СКРИН
                     </motion.div>
@@ -119,6 +120,13 @@ export default function WorksSection() {
           </motion.div>
         )
       })}
+
+      {/* 👉 модалка одна для всей секции */}
+      <WorksModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        projects={tabs[active].projects}
+      />
     </motion.section>
   )
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence, Variants } from "framer-motion"
+import WorksModal from "./WorksModal"
 import { tabs } from "../data/tabs"
 
 const container: Variants = {
@@ -24,6 +25,7 @@ function LineReveal({ text }: { text: React.ReactNode }) {
 
 export default function WorksSectionLaptop() {
   const [active, setActive] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <motion.section
@@ -106,8 +108,9 @@ export default function WorksSectionLaptop() {
                   {/* Скрин */}
                   <motion.div
                     variants={line}
+                    onClick={() => setIsModalOpen(true)}
                     className="w-full h-[240px] sm:h-[280px] md:h-[320px] 
-                               bg-gray-200 text-black flex items-center justify-center text-xl md:text-2xl font-bold"
+                               bg-gray-200 text-black flex items-center justify-center text-xl md:text-2xl font-bold cursor-pointer hover:scale-95 transition-transform"
                   >
                     СКРИН
                   </motion.div>
@@ -117,6 +120,13 @@ export default function WorksSectionLaptop() {
           </motion.div>
         )
       })}
+
+      {/* 👉 модалка одна для всей секции */}
+      <WorksModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        projects={tabs[active].projects}
+      />
     </motion.section>
   )
 }

@@ -2,11 +2,20 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
+import WorksModal from "./WorksModal"
 import { tabs } from "../data/tabs"
 import type { Tab } from "../data/tabs"
 
 // 🔹 Контент аккордеона
-function AccordionItem({ tab, isActive }: { tab: Tab; isActive: boolean }) {
+function AccordionItem({
+  tab,
+  isActive,
+  onOpenModal,
+}: {
+  tab: Tab
+  isActive: boolean
+  onOpenModal: () => void
+}) {
   const ref = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
 
@@ -38,7 +47,10 @@ function AccordionItem({ tab, isActive }: { tab: Tab; isActive: boolean }) {
           ))}
         </div>
 
-        <div className="w-full h-[200px] bg-gray-200 text-black flex items-center justify-center font-bold">
+        <div
+          onClick={onOpenModal}
+          className="w-full h-[200px] bg-gray-200 text-black flex items-center justify-center font-bold cursor-pointer hover:scale-95 transition-transform"
+        >
           СКРИН
         </div>
       </div>
@@ -48,6 +60,7 @@ function AccordionItem({ tab, isActive }: { tab: Tab; isActive: boolean }) {
 
 export default function WorksSectionMobile() {
   const [active, setActive] = useState<number | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <motion.section
@@ -78,10 +91,23 @@ export default function WorksSectionMobile() {
               <span>{isActive ? "–" : "+"}</span>
             </button>
 
-            <AccordionItem tab={tab} isActive={isActive} />
+            <AccordionItem
+              tab={tab}
+              isActive={isActive}
+              onOpenModal={() => setIsModalOpen(true)}
+            />
           </div>
         )
       })}
+
+      {/* 👉 модалка одна для всей секции */}
+      {active !== null && (
+        <WorksModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          projects={tabs[active].projects}
+        />
+      )}
     </motion.section>
   )
 }
