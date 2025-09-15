@@ -3,10 +3,10 @@ import type { Config } from "tailwindcss"
 const config: Config = {
   darkMode: "class",
   content: [
-  "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-  "./components/**/*.{js,ts,jsx,tsx,mdx}",
-  "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -20,7 +20,11 @@ const config: Config = {
         content: "1400px",
         wide: "1600px",
         ultra: "1800px",
-         mega: "2200px",
+        mega: "2200px",
+      },
+      fontFamily: {
+        inter: ["var(--font-inter)", "sans-serif"],
+        sora: ["var(--font-sora)", "sans-serif"],
       },
     },
   },

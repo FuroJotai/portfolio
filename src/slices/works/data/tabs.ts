@@ -19,7 +19,7 @@ export const tabs: Tab[] = [
     id: "webflow",
     number: "01",
     label: "No-code",
-    title: ["Launch fast websites", " with Webflow, WordPress."],
+    title: ["Launch fast websites with Webflow, WordPress."],
     desc: [
       "I work with Webflow, WordPress, and even Tilda to create websites that balance speed, design flexibility, and long-term scalability.",
       "These platforms allow me to launch projects quickly, while still adding custom code or integrations when needed.",
@@ -44,7 +44,7 @@ export const tabs: Tab[] = [
     id: "code",
     number: "02",
     label: "Clean code",
-    title: ["Hand-coded websites with", "modern tech"],
+    title: ["Hand-coded websites with modern tech"],
     desc: [
       "I specialize in modern frameworks like Next.js and React to deliver applications that are not only fast but also built for long-term growth.",
       "By following clean code principles — readable, reusable, and well-structured — I make sure the project remains easy to maintain and scale as your business evolves.",
@@ -64,7 +64,7 @@ export const tabs: Tab[] = [
     id: "creativity",
     number: "03",
     label: "Redisign",
-    title: ["Refreshing outdated", "websites"],
+    title: ["Refreshing outdated websites"],
     desc: [
       "I help businesses transform outdated websites into modern, user-friendly platforms that build trust and convert better.",
       "A redesign isn’t just about new visuals — it’s about improving structure, navigation, and overall user experience.",

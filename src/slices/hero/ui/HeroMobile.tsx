@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, type Variants } from "framer-motion"
-import { scrollToSection } from "../utils/scroll" // 👈 тот же хелпер, что и в десктопе
+import { scrollToSection } from "../utils/scroll"
 import { contactButtonClasses } from "../utils/buttonStyles"
 
 const title = "Across Pixels"
@@ -36,23 +36,18 @@ const menuItems = [
 export default function HeroMobile() {
   return (
     <section className="relative min-h-screen flex flex-col px-4 py-4 overflow-hidden">
-      {/* Top bar */}
+      {/* 🔹 Верхняя панель */}
       <header className="flex items-center justify-between relative z-10 mb-8">
         <div className="text-lg font-bold">LOGO</div>
         <button
           onClick={() => scrollToSection("contact")}
-          className="rounded-lg text-white 
-               text-[clamp(14px,2vw16px)] 
-               font-medium 
-               px-[clamp(12px,1vw,16px)] 
-               py-[clamp(8px,1vw,12px)] 
-               border border-white/40"
+          className={`${contactButtonClasses} text-sm px-4 py-2`}
         >
           Contact
         </button>
       </header>
 
-      {/* Center: текст + меню */}
+      {/* 🔹 Центр: текст */}
       <div className="flex flex-col items-center justify-center flex-1 gap-10 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Подзаголовок */}
@@ -96,12 +91,12 @@ export default function HeroMobile() {
           </motion.h1>
         </div>
 
-        {/* Меню */}
+        {/* 🔹 Меню */}
         <nav className="flex flex-col w-full gap-4">
           {menuItems.map((item, i) => (
             <motion.div
               key={item.label}
-              onClick={() => scrollToSection(item.target)} // 👈 обычный скролл
+              onClick={() => scrollToSection(item.target)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: CARDS_DELAY + i * 0.25 }}
@@ -128,20 +123,22 @@ export default function HeroMobile() {
           ))}
         </nav>
 
-        {/* Фото под меню */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.9 }} // появится при скролле на 90%
-        className="mt-12 w-full flex justify-center"
-      >
-        <img
-          src="/hero/hero_photo_dt.png"
-          alt="Hero image"
-          className="w-full max-h-[350px] h-auto object-contain rounded-2xl shadow-lg"
-        />
-      </motion.div>
+        {/* 🔹 Фото + линия снизу */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.9 }}
+          className="relative mt-12 w-full flex justify-center"
+        >
+          <img
+            src="/hero/hero_photo_dt.png"
+            alt="Hero image"
+            className="w-[70%] max-w-[280px] h-auto object-contain drop-shadow-2xl"
+          />
+          {/* Линия по нижней границе фото */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full  h-[2px] bg-white/40" />
+        </motion.div>
       </div>
     </section>
   )

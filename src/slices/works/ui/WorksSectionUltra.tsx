@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence, Variants } from "framer-motion"
 import WorksModal from "./WorksModal"
 import { tabs } from "../data/tabs"
+import { textStyles } from "../../hero/utils/textStyles"
 
 const container: Variants = {
   hidden: {},
@@ -34,7 +35,7 @@ export default function WorksSectionUltra() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.35 }}
-      className="relative flex w-full h-[clamp(800px,95vh,1400px)] text-white overflow-hidden pt-20"
+      className="relative flex w-full h-[clamp(600px,95vh,1000px)] text-white pt-20"
     >
       {tabs.map((tab, i) => {
         const isActive = i === active
@@ -43,7 +44,7 @@ export default function WorksSectionUltra() {
             key={tab.id}
             layout
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`flex border-r border-white/10 overflow-hidden ${
+            className={`flex border-r border-white/10 ${
               isActive ? "flex-[5]" : "w-20"
             }`}
           >
@@ -57,77 +58,69 @@ export default function WorksSectionUltra() {
               <span className="absolute top-19 left-1/2 -translate-x-1/2 text-[clamp(20px,2vw,40px)] font-sora font-bold leading-none">
                 {tab.number}
               </span>
-              <span className="absolute bottom-16 left-1/2 -translate-x-1/2 
-                               text-[clamp(28px,2vw,60px)] font-sora tracking-widest [writing-mode:vertical-rl] leading-none whitespace-nowrap">
+              <span className={`absolute bottom-16 left-1/2 -translate-x-1/2 
+              ${textStyles.h3} tracking-widest [writing-mode:vertical-rl] whitespace-nowrap`}>
                 {tab.label}
               </span>
             </motion.button>
 
             {/* Контент */}
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               {isActive && (
                 <motion.div
                   key={tab.id}
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
+                  initial={false}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: "100%", opacity: 0 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="flex-1 p-16 flex flex-col justify-between"
+                  className="flex-1 p-16 flex flex-row gap-12 items-start"
                 >
-                  {/* Заголовок */}
+                  {/* Заголовок + текст слева */}
                   <motion.div
                     variants={container}
                     initial="hidden"
                     animate="show"
-                    className="flex flex-col gap-4"
+                    className="flex flex-col gap-6 self-start flex-1 max-w-[1000px]"
                   >
                     {tab.title.map((lineText, idx) => (
                       <LineReveal
                         key={idx}
-                        text={
-                          <span className="text-[clamp(30px,3vw,80px)] leading-none font-sora font-semibold">
-                            {lineText}
-                          </span>
-                        }
+                        text={<span className={textStyles.h2}>{lineText}</span>}
                       />
                     ))}
+
+                    <div className="flex flex-col gap-3">
+                      {tab.desc.map((lineText, idx) => (
+                        <LineReveal
+                          key={idx}
+                          text={<p className={textStyles.bodyLarge}>{lineText}</p>}
+                        />
+                      ))}
+                    </div>
                   </motion.div>
 
-                  {/* Описание + превью */}
-                  <div className="flex flex-row gap-12 items-end">
-                    <motion.div
-                      variants={container}
-                      initial="hidden"
-                      animate="show"
-                      className="flex-1 flex flex-col gap-3 text-gray-300 font-sora text-[clamp(24px,1.5vw,32px)]"
-                    >
-                      {tab.desc.map((lineText, idx) => (
-                        <LineReveal key={idx} text={lineText} />
-                      ))}
-                    </motion.div>
+                  {/* Превью справа */}
+                  <motion.div
+  variants={line}
+  onClick={() => setIsModalOpen(true)}
+  className="w-[clamp(1200px,36vw,1600px)] h-[clamp(800px,24vw,1000px)] 
+             self-start ml-auto rounded-xl shadow-lg cursor-pointer 
+             border border-white/20 transition-colors duration-500 ease-in-out
+             hover:border-white/25 overflow-hidden"
+>
+  <motion.div
+    whileHover={{ scale: 0.95 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    className="w-full h-full"
+  >
+    <img
+      src={tab.previewImg || "/works/placeholder.png"}
+      alt="Preview"
+      className="w-full h-full object-contain"
+    />
+  </motion.div>
+</motion.div>
 
-                    {/* 🔹 превью с бордером */}
-                    <motion.div
-                      variants={line}
-                      onClick={() => setIsModalOpen(true)}
-                      className="w-[clamp(900px,36vw,1300px)] h-[clamp(600px,24vw,900px)] 
-                                 overflow-hidden rounded-xl shadow-lg cursor-pointer 
-                                 border border-white/20 transition-colors duration-500 ease-in-out
-                                 hover:border-white/25"
-                    >
-                      <motion.div
-                        whileHover={{ scale: 0.95 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="w-full h-full"
-                      >
-                        <img
-                          src={tab.previewImg || "/works/placeholder.png"}
-                          alt="Preview"
-                          className="w-full h-full object-contain"
-                        />
-                      </motion.div>
-                    </motion.div>
-                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

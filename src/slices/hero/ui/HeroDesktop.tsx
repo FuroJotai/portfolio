@@ -35,9 +35,7 @@ const menuItems = [
 
 export default function HeroDesktop() {
   return (
-    <section
-      className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden"
-    >
+    <section className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden">
       {/* 🔹 Верхняя панель */}
       <header className="flex items-center justify-between relative z-10">
         <motion.div
@@ -64,9 +62,8 @@ export default function HeroDesktop() {
         </motion.button>
       </header>
 
-      {/* 🔹 Центр: текст + фото */}
-      <div className="flex flex-1 items-center justify-between relative">
-        {/* Левая часть — текст */}
+      {/* 🔹 Центр: текст */}
+      <div className="flex flex-1 items-center justify-start relative">
         <div className="flex flex-col items-start relative">
           {/* Подзаголовок */}
           <motion.h2
@@ -113,24 +110,10 @@ export default function HeroDesktop() {
             ))}
           </motion.h1>
         </div>
-
-        {/* Правая часть — фото */}
-        <motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1, delay: TOTAL_DURATION + PER_LETTER_DURATION + 1.4 }}
-  className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-0"
->
-  <img
-    src="/hero/hero_photo_dt.png"
-    alt="Hero image"
-    className="h-auto max-h-[70vh] 2xl:max-h-[650px] 3xl:max-h-[100vh] object-contain rounded-2xl shadow-lg"
-  />
-</motion.div>
       </div>
 
-      {/* 🔹 Нижнее меню */}
-      <nav className="flex w-full relative z-10">
+      {/* 🔹 Нижнее меню + фото */}
+      <nav className="relative flex w-full z-10">
         {menuItems.map((item, i) => (
           <motion.div
             key={item.label}
@@ -145,12 +128,13 @@ export default function HeroDesktop() {
                        text-center bg-white/5 backdrop-blur-md 
                        border border-white/20 cursor-pointer 
                        text-white transition-colors duration-300 
-                       hover:border-white/25"
+                       hover:border-white/25
+                       z-10"
           >
             <motion.span
               className="text-base font-medium 
                          text-[clamp(14px,1.2vw,24px)] 
-                         block tracking-wider"
+                         block tracking-wider relative z-10"
               variants={{
                 hover: {
                   scale: 1.04,
@@ -164,6 +148,23 @@ export default function HeroDesktop() {
             </motion.span>
           </motion.div>
         ))}
+
+        {/* Фото позади кнопок */}
+        <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1, delay: CARDS_DELAY + menuItems.length * 0.25 }}
+  className="hidden lg:block absolute bottom-0 right-0 z-0 pointer-events-none"
+>
+  <img
+    src="/hero/hero_photo_dt.png"
+    alt="Hero image"
+    className="h-auto max-h-[80vh] 
+               w-[clamp(280px,35vw,720px)] 
+               4xl:w-[900px] 5xl:w-[1100px] 6xl:w-[1300px]
+               object-contain rounded-2xl shadow-lg"
+  />
+</motion.div>
       </nav>
     </section>
   )
