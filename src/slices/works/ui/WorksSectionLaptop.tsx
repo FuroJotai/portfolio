@@ -105,14 +105,26 @@ export default function WorksSectionLaptop() {
                     ))}
                   </motion.div>
 
-                  {/* Скрин */}
+                  {/* Превью */}
                   <motion.div
                     variants={line}
                     onClick={() => setIsModalOpen(true)}
-                    className="w-full h-[240px] sm:h-[280px] md:h-[320px] 
-                               bg-gray-200 text-black flex items-center justify-center text-xl md:text-2xl font-bold cursor-pointer hover:scale-95 transition-transform"
+                    className="w-full h-[220px] sm:h-[260px] md:h-[300px] 
+                               overflow-hidden rounded-xl shadow-lg cursor-pointer 
+                               border border-white/20 transition-colors duration-500 ease-in-out
+                               hover:border-white/25"
                   >
-                    СКРИН
+                    <motion.div
+                      whileHover={{ scale: 0.95 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="w-full h-full"
+                    >
+                      <img
+                        src={tab.previewImg || "/works/placeholder.png"}
+                        alt="Preview"
+                        className="w-full h-full object-contain"
+                      />
+                    </motion.div>
                   </motion.div>
                 </motion.div>
               )}
@@ -121,7 +133,7 @@ export default function WorksSectionLaptop() {
         )
       })}
 
-      {/* 👉 модалка одна для всей секции */}
+      {/* 👉 одна модалка для всей секции */}
       <WorksModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

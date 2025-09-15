@@ -127,6 +127,21 @@ export default function HeroMobile() {
             </motion.div>
           ))}
         </nav>
+
+        {/* Фото под меню */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.9 }} // появится при скролле на 90%
+        className="mt-12 w-full flex justify-center"
+      >
+        <img
+          src="/hero/hero_photo_dt.png"
+          alt="Hero image"
+          className="w-full max-h-[350px] h-auto object-contain rounded-2xl shadow-lg"
+        />
+      </motion.div>
       </div>
     </section>
   )

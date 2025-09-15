@@ -3,11 +3,11 @@ export const contactButtonClasses = `
   py-[clamp(6px,0.8vw,16px)]
   text-[clamp(12px,1vw,18px)]
   leading-none font-medium
-  border border-white/40
+  border border-white/20
   rounded-lg
   text-white
   transition-colors duration-300
   cursor-pointer
-  hover:bg-[#0a0f1c]/60
-  hover:border-white/60
+  hover:bg-[#0a0f1c]/20
+  hover:border-white/25
 `

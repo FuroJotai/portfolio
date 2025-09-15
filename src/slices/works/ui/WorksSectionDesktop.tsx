@@ -109,13 +109,26 @@ export default function WorksSection() {
                     </motion.div>
 
                     <motion.div
-                      variants={line}
-                      className="w-[clamp(500px,36vw,1100px)] h-[clamp(300px,24vw,700px)] bg-gray-200 cursor-pointer
-                                text-black flex items-center justify-center text-2xl font-bold"
-                      onClick={() => setIsModalOpen(true)}
-                    >
-                      СКРИН
-                    </motion.div>
+  variants={line}
+  onClick={() => setIsModalOpen(true)}
+  className="w-[clamp(500px,36vw,1100px)] h-[clamp(300px,24vw,700px)] 
+             overflow-hidden rounded-xl shadow-lg cursor-pointer 
+             border border-white/20 transition-colors duration-500 ease-in-out
+             hover:border-white/25"
+>
+  <motion.div
+    whileHover={{ scale: 0.95 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    className="w-full h-full"
+  >
+    <img
+      src={tab.previewImg || "/works/placeholder.png"}
+      alt="Preview"
+      className="w-full h-full object-contain"
+    />
+  </motion.div>
+</motion.div>
+
                   </div>
                 </motion.div>
               )}

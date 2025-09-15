@@ -10,6 +10,7 @@ export type Tab = {
   label: string
   title: string[]
   desc: string[]
+  previewImg?: string   // 👈 превьюшка для секции
   projects?: Project[]
 }
 
@@ -25,6 +26,7 @@ export const tabs: Tab[] = [
       "The real benefit for clients is control: they can easily update content, manage SEO, and adapt their site without depending on a developer (with just a small tutorial at the end).",
       "This approach combines the efficiency of no-code tools with the reliability of proven development practices — so each project is both beautiful and built to grow.",
     ],
+    previewImg: "/works/preview_nocode.png", // 👈 превьюшка
     projects: [
       {
         img: "/works/site_1.png",
@@ -49,10 +51,11 @@ export const tabs: Tab[] = [
       "With TypeScript preventing bugs early and Tailwind keeping design consistent across devices, the result is a stable, high-performance product.",
       "This approach saves clients both time and money in the future, since adding new features or updates doesn’t mean rewriting the whole system.",
     ],
+    previewImg: "/works/preview_cleancode.png", // 👈 превьюшка
     projects: [
       {
-        img: "/works/clean_code_1.png", // закинь сюда скрин своего сайта
-        url: "https://welldeeportfolio.vercel.app/", // реальный линк на твой сайт
+        img: "/works/clean_code_1.png",
+        url: "https://welldeeportfolio.vercel.app/",
         desc: "This very website — my portfolio. Built with Next.js, React, Tailwind and Framer Motion, where I experiment with animations, share my work. You’re already here!",
       },
     ],
@@ -68,5 +71,6 @@ export const tabs: Tab[] = [
       "By applying UX best practices, fresh design systems, and smooth interactions, I make sure every page feels professional and aligned with the brand.",
       "The result is a website that not only looks great but also keeps visitors engaged and drives measurable growth.",
     ],
+    previewImg: "/works/preview_creativity.png", // можно добавить позже
   },
 ]

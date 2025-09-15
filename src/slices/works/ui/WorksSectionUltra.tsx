@@ -34,7 +34,7 @@ export default function WorksSectionUltra() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.35 }}
-      className="relative flex w-full h-[clamp(800px,95vh,1400px)] text-white overflow-hidden pt-20 "
+      className="relative flex w-full h-[clamp(800px,95vh,1400px)] text-white overflow-hidden pt-20"
     >
       {tabs.map((tab, i) => {
         const isActive = i === active
@@ -93,7 +93,7 @@ export default function WorksSectionUltra() {
                     ))}
                   </motion.div>
 
-                  {/* Описание + скрин */}
+                  {/* Описание + превью */}
                   <div className="flex flex-row gap-12 items-end">
                     <motion.div
                       variants={container}
@@ -106,12 +106,26 @@ export default function WorksSectionUltra() {
                       ))}
                     </motion.div>
 
+                    {/* 🔹 превью с бордером */}
                     <motion.div
                       variants={line}
                       onClick={() => setIsModalOpen(true)}
-                      className="w-[clamp(900px,36vw,1300px)] h-[clamp(600px,24vw,900px)] bg-gray-200 text-black flex items-center justify-center text-2xl font-bold cursor-pointer hover:scale-95 transition-transform"
+                      className="w-[clamp(900px,36vw,1300px)] h-[clamp(600px,24vw,900px)] 
+                                 overflow-hidden rounded-xl shadow-lg cursor-pointer 
+                                 border border-white/20 transition-colors duration-500 ease-in-out
+                                 hover:border-white/25"
                     >
-                      СКРИН
+                      <motion.div
+                        whileHover={{ scale: 0.95 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="w-full h-full"
+                      >
+                        <img
+                          src={tab.previewImg || "/works/placeholder.png"}
+                          alt="Preview"
+                          className="w-full h-full object-contain"
+                        />
+                      </motion.div>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -121,7 +135,7 @@ export default function WorksSectionUltra() {
         )
       })}
 
-      {/* 👉 модалка одна для всей секции */}
+      {/* 👉 одна модалка для всей секции */}
       <WorksModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

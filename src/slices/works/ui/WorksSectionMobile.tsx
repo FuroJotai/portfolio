@@ -33,6 +33,7 @@ function AccordionItem({
       className="overflow-hidden"
     >
       <div ref={ref} className="pl-2 pr-4 pb-6">
+        {/* Заголовок */}
         <div className="flex flex-col gap-2 mb-3">
           {tab.title.map((line, idx) => (
             <span key={idx} className="text-xl font-sora font-semibold">
@@ -41,18 +42,33 @@ function AccordionItem({
           ))}
         </div>
 
+        {/* Описание */}
         <div className="flex flex-col gap-1 mb-4 text-gray-300 text-sm">
           {tab.desc.map((line, idx) => (
             <span key={idx}>{line}</span>
           ))}
         </div>
 
-        <div
+        {/* 🔹 Превью вместо СКРИН */}
+        <motion.div
           onClick={onOpenModal}
-          className="w-full h-[200px] bg-gray-200 text-black flex items-center justify-center font-bold cursor-pointer hover:scale-95 transition-transform"
+          className="w-full h-[clamp(180px,30vw,260px)] 
+                     overflow-hidden rounded-lg shadow-lg cursor-pointer 
+                     border border-white/20 transition-colors duration-500 ease-in-out
+                     hover:border-white/25"
         >
-          СКРИН
-        </div>
+          <motion.div
+            whileHover={{ scale: 0.95 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="w-full h-full"
+          >
+            <img
+              src={tab.previewImg || "/works/placeholder.png"}
+              alt="Preview"
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </motion.div>
   )

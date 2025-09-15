@@ -27,7 +27,6 @@ const makeVariants = (len: number): Variants => ({
 
 const CARDS_DELAY = TOTAL_DURATION + PER_LETTER_DURATION + 0.2
 
-// 🔹 меню
 const menuItems = [
   { label: "My Projects", target: "works", special: false },
   { label: "About Me", target: "about", special: true },
@@ -41,26 +40,33 @@ export default function HeroDesktop() {
     >
       {/* 🔹 Верхняя панель */}
       <header className="flex items-center justify-between relative z-10">
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
           className="cursor-pointer font-bold leading-none 
                      text-[clamp(20px,1.8vw,48px)]"
         >
           LOGO
-        </div>
+        </motion.div>
 
-        <button
-          onClick={() => scrollToSection("contact", true)} // 👈 Contact = special
+        <motion.button
+          onClick={() => scrollToSection("contact", true)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.4 }}
           className={`${contactButtonClasses} 
                       text-[clamp(14px,1.2vw,28px)] 
                       px-[clamp(14px,1.5vw,36px)] 
                       py-[clamp(6px,0.8vw,18px)]`}
         >
           Contact me
-        </button>
+        </motion.button>
       </header>
 
-      {/* 🔹 Центр: текст */}
-      <div className="flex flex-1 items-center relative z-10">
+      {/* 🔹 Центр: текст + фото */}
+      <div className="flex flex-1 items-center justify-between relative z-10">
+        {/* Левая часть — текст */}
         <div className="flex flex-col items-start relative">
           {/* Подзаголовок */}
           <motion.h2
@@ -107,6 +113,20 @@ export default function HeroDesktop() {
             ))}
           </motion.h1>
         </div>
+
+        {/* Правая часть — фото */}
+        <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1, delay: TOTAL_DURATION + PER_LETTER_DURATION + 1.4 }}
+  className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-0"
+>
+  <img
+    src="/hero/hero_photo_dt.png"
+    alt="Hero image"
+    className="h-auto max-h-[70vh] 2xl:max-h-[650px] 3xl:max-h-[100vh] object-contain rounded-2xl shadow-lg"
+  />
+</motion.div>
       </div>
 
       {/* 🔹 Нижнее меню */}
