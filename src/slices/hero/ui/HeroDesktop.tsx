@@ -45,7 +45,7 @@ export default function HeroDesktop() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="cursor-pointer font-bold leading-none 
-                     text-[clamp(20px,1.8vw,48px)]"
+                     text-[clamp(20px,1.8vw,48px)] z-15"
         >
           LOGO
         </motion.div>
@@ -55,7 +55,7 @@ export default function HeroDesktop() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className={`${contactButtonClasses} 
+          className={`${contactButtonClasses} z-20
                       text-[clamp(14px,1.2vw,28px)] 
                       px-[clamp(14px,1.5vw,36px)] 
                       py-[clamp(6px,0.8vw,18px)]`}
@@ -65,7 +65,7 @@ export default function HeroDesktop() {
       </header>
 
       {/* 🔹 Центр: текст + фото */}
-      <div className="flex flex-1 items-center justify-between relative z-10">
+      <div className="flex flex-1 items-center justify-between relative">
         {/* Левая часть — текст */}
         <div className="flex flex-col items-start relative">
           {/* Подзаголовок */}
