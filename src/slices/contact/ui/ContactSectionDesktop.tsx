@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import emailjs from "@emailjs/browser"
+import { textStyles } from "@/slices/hero/utils/textStyles"
 
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -66,7 +67,7 @@ export default function ContactSection() {
               {/* Фраза сверху */}
               <motion.p
                 style={{ opacity: phraseOpacity }}
-                className="text-[clamp(20px,1.8vw,56px)] font-bold text-center"
+                className={`${textStyles.h5} 4xl:${textStyles.h4} text-center`}
               >
                 Book your free consultation
               </motion.p>
@@ -78,18 +79,18 @@ export default function ContactSection() {
               >
                 {/* Let's / Create */}
                 <div className="absolute inset-0 flex justify-between items-center pointer-events-none">
-                  <motion.div
+                  <motion.p
                     style={{ opacity: letsOpacity, x: letsX }}
-                    className="text-[clamp(24px,2.2vw,64px)] font-semibold"
+                    className={`${textStyles.h5} 4xl:${textStyles.h4}`}
                   >
                     let’s
-                  </motion.div>
-                  <motion.div
+                  </motion.p>
+                  <motion.p
                     style={{ opacity: createOpacity, x: createX }}
-                    className="text-[clamp(24px,2.2vw,64px)] font-semibold"
+                    className={`${textStyles.h5} 4xl:${textStyles.h4}`}
                   >
                     create
-                  </motion.div>
+                  </motion.p>
                 </div>
 
                 {/* Input */}
@@ -100,19 +101,21 @@ export default function ContactSection() {
                   placeholder="Enter your email"
                   style={{ opacity: inputOpacity }}
                   required
-                  className="border border-gray-500 
-                             px-[clamp(16px,1.5vw,32px)] py-[clamp(10px,1vw,24px)] 
-                             rounded-md w-full text-gray-200 text-center
-                             text-[clamp(16px,1.2vw,28px)]
-                             placeholder:text-gray-500 focus:placeholder:text-gray-400
-                             outline-none focus:border-gray-500 transition-colors"
+                  className={`
+                    border border-gray-500 
+                    px-[clamp(16px,1.5vw,32px)] py-[clamp(10px,1vw,24px)] 
+                    rounded-md w-full text-gray-200 text-center
+                    ${textStyles.bodyLarge}
+                    placeholder:text-gray-500 focus:placeholder:text-gray-400
+                    outline-none focus:border-gray-500 transition-colors
+                  `}
                 />
               </form>
 
               {/* "a dream" */}
               <motion.span
                 style={{ opacity: dreamOpacity }}
-                className="text-[clamp(18px,1.8vw,32px)]"
+                className={`${textStyles.h5} 4xl:${textStyles.h4}`}
               >
                 a dream
               </motion.span>
@@ -123,12 +126,12 @@ export default function ContactSection() {
                   onClick={handleSubmit}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-6 
-                             px-[clamp(20px,2vw,40px)] py-[clamp(10px,1vw,24px)] 
-                             border border-gray-500/30 text-gray-400 
-                             rounded-md bg-transparent transition-colors
-                             text-[clamp(16px,1.3vw,28px)]
-                             hover:border-gray-500 hover:text-white"
+                  className={`
+                    mt-6 px-[clamp(20px,2vw,40px)] py-[clamp(10px,1vw,24px)]
+                    border border-gray-500/30 text-gray-400 rounded-md bg-transparent
+                    transition-colors hover:border-gray-500 hover:text-white
+                    ${textStyles.bodyLarge}
+                  `}
                 >
                   Submit
                 </motion.button>
@@ -142,10 +145,10 @@ export default function ContactSection() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center"
             >
-              <h2 className="text-[clamp(24px,2.5vw,64px)] font-bold mb-4">
+              <p className={`${textStyles.h5} 4xl:${textStyles.h4} mb-4`}>
                 Thank you for booking!
-              </h2>
-              <p className="text-[clamp(18px,1.5vw,32px)] text-gray-300">
+              </p>
+              <p className={textStyles.bodyLarge}>
                 We’ll get in touch with you shortly.
               </p>
             </motion.div>

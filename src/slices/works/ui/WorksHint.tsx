@@ -1,22 +1,23 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function WorksHint() {
   const [show, setShow] = useState(false)
   const [pos, setPos] = useState({ x: 0, y: 0 })
+  const shownRef = useRef(false) // 👉 флаг, показывали ли подсказку
 
   useEffect(() => {
     const works = document.getElementById("works")
-    if (!works) return
+    if (!works || shownRef.current) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !shownRef.current) {
+          shownRef.current = true // 👉 больше не показываем
           setShow(true)
-          // скрываем через 8 секунд
-          setTimeout(() => setShow(false), 8000)
+          setTimeout(() => setShow(false), 6000)
         }
       },
       { threshold: 0.3 }
