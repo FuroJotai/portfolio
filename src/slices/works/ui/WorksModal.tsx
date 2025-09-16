@@ -36,48 +36,63 @@ export default function WorksModal({ isOpen, onClose, projects, tabId }: WorksMo
             className="
               relative 
               w-[92%] sm:w-[85%] md:w-[85%] 
-              max-w-3xl 2xl:max-w-[1400px] 
+              max-w-3xl 2xl:max-w-[1400px] 4xl:max-w-[2000px] 5xl:max-w-[2400px]
               bg-neutral-900/95 rounded-xl border border-gray-700 shadow-xl 
-              p-6 sm:p-8 2xl:p-12
+              p-6 sm:p-8 2xl:p-12 4xl:p-20
             "
           >
             {/* кнопка закрытия */}
             <button
               onClick={onClose}
-              className="absolute top-2 right-2 sm:top-3 sm:right-3 text-gray-400 hover:text-white transition-colors cursor-pointer text-lg sm:text-xl 2xl:text-2xl"
+              className="absolute top-2 right-2 sm:top-3 sm:right-3 text-gray-400 hover:text-white transition-colors cursor-pointer text-lg sm:text-xl 2xl:text-2xl 4xl:text-4xl"
             >
               ✕
             </button>
 
             {/* контент модалки */}
             {projects && projects.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 2xl:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 2xl:gap-10 4xl:gap-14">
                 {projects.map((proj, idx) => (
-                  <div key={idx} className="flex flex-col gap-4">
+                  <div
+                    key={idx}
+                    className="flex flex-col justify-between gap-6"
+                  >
                     {/* картинка */}
                     <img
                       src={proj.img}
                       alt={proj.desc}
                       className="w-full 
-                                 h-32 sm:h-40 md:h-42 
-                                 2xl:h-[300px] 
-                                 object-contain rounded-lg border border-gray-700"
+                                 h-32 sm:h-40 md:h-48 
+                                 2xl:h-[320px] 4xl:h-[420px] 5xl:h-[500px]
+                                 object-contain rounded-lg"
                     />
 
                     {/* описание */}
-                    <p className={`${textStyles.small} 4xl:${textStyles.body}`}>
+                    <p
+                      className={`
+                        ${textStyles.small} 
+                        2xl:${textStyles.body} 
+                        4xl:text-[28px] 5xl:text-[32px] 6xl:text-[36px]
+                        font-inter text-gray-300 leading-relaxed
+                      `}
+                    >
                       {proj.desc}
                     </p>
 
-                    {/* кнопка */}
-                    <a
-                      href={proj.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-4 py-2 rounded-lg border border-gray-300 text-white hover:bg-white hover:text-neutral-900 transition-colors duration-500 ease-out text-center"
-                    >
-                      {tabId === "creativity" ? "View redesign" : "Visit site"}
-                    </a>
+                    {/* кнопка прибита к низу */}
+                    <div className="mt-auto">
+                      <a
+                        href={proj.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-6 py-3 rounded-lg border border-gray-300 text-white 
+                                  hover:bg-white hover:text-neutral-900 
+                                  transition-colors duration-500 ease-out text-center
+                                  text-base sm:text-lg 2xl:text-lg
+                                  4xl:text-[28px] 5xl:text-[32px] 6xl:text-[36px]">
+                        {tabId === "creativity" ? "View redesign" : "Visit site"}
+                      </a>
+                    </div>
                   </div>
                 ))}
               </div>
