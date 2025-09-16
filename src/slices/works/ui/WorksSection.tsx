@@ -5,6 +5,7 @@ import WorksSectionMobile from "./WorksSectionMobile"
 import WorksSectionLaptop from "./WorksSectionLaptop"
 import WorksSectionDesktop from "./WorksSectionDesktop"
 import WorksSectionUltra from "./WorksSectionUltra"
+import WorksHint from "./WorksHint"
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false)
@@ -47,6 +48,8 @@ export default function WorksSection() {
       {isLaptop && <WorksSectionLaptop />}
       {isDesktop &&
         (isLargeHeight ? <WorksSectionUltra /> : <WorksSectionDesktop />)}
+
+        {isDesktop &&isLargeHeight  &&<WorksHint />}
     </section>
   )
 }

@@ -1,4 +1,4 @@
-// src/utils/textStyles.ts
+// src/slices/hero/utils/textStyles.ts
 export const textStyles = {
   // === Заголовки (Sora) ===
   h1: "font-sora text-[clamp(32px,5vw,96px)] leading-tight 3xl:text-[104px] 4xl:text-[112px] 5xl:text-[128px] 6xl:text-[144px]",

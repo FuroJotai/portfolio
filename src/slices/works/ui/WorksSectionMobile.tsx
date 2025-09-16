@@ -122,6 +122,7 @@ export default function WorksSectionMobile() {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           projects={tabs[active].projects}
+          tabId={tabs[active].id}
         />
       )}
     </motion.section>

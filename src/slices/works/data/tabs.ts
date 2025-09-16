@@ -56,21 +56,30 @@ export const tabs: Tab[] = [
       {
         img: "/works/clean_code_1.png",
         url: "https://welldeeportfolio.vercel.app/",
-        desc: "This very website — my portfolio. Built with Next.js, React, Tailwind and Framer Motion, where I experiment with animations, share my work. You’re already here!",
+        desc: `This website is my portfolio, designed and developed with Next.js, React, Tailwind and Framer Motion.
+                It reflects my focus on clean UI, smooth animations, and fully responsive layouts — crafted with the same care I bring to every project.`,
       },
     ],
   },
   {
-    id: "creativity",
-    number: "03",
-    label: "Redisign",
-    title: ["Refreshing outdated websites"],
-    desc: [
-      "I help businesses transform outdated websites into modern, user-friendly platforms that build trust and convert better.",
-      "A redesign isn’t just about new visuals — it’s about improving structure, navigation, and overall user experience.",
-      "By applying UX best practices, fresh design systems, and smooth interactions, I make sure every page feels professional and aligned with the brand.",
-      "The result is a website that not only looks great but also keeps visitors engaged and drives measurable growth.",
-    ],
-    previewImg: "/works/preview_creativity.png", // можно добавить позже
-  },
+  id: "creativity",
+  number: "03",
+  label: "Redesign",
+  title: ["Refreshing outdated websites"],
+  desc: [
+    "I help businesses transform outdated websites into modern, user-friendly platforms that build trust and convert better.",
+    "A redesign isn’t just about new visuals — it’s about improving structure, navigation, and overall user experience.",
+    "By applying UX best practices, fresh design systems, and smooth interactions, I make sure every page feels professional and aligned with the brand.",
+    "The result is a website that not only looks great but also keeps visitors engaged and drives measurable growth.",
+  ],
+  previewImg: "/works/preview_creativity.png",
+  projects: [
+    {
+      img: "/works/redesign_1.png", // 👉 полный скрин
+      url: "/works/redesign_1.png", // 👉 ведём на картинку
+      desc: "Redesign of a corporate website: improved navigation, updated design system, and optimized performance.",
+    },
+  ],
+}
+
 ]
