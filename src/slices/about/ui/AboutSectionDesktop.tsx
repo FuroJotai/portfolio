@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollRevealText from "./ScrollRevealText";
 import { about } from "@/slices/about/data/about";
+import { textStyles } from "@/slices/hero/utils/textStyles";
 
 export default function AboutSectionDesktop() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -63,7 +64,7 @@ export default function AboutSectionDesktop() {
           {/* Заголовок + текст справа */}
           <div className="col-span-7">
             <motion.h2
-              className="text-3xl xl:text-3xl font-semibold tracking-tight mb-12"
+              className={`${textStyles.h4} mb-12`}
               style={{ opacity: headingOpacity }}
             >
               {about.heading}
@@ -72,7 +73,7 @@ export default function AboutSectionDesktop() {
             <ScrollRevealText
               text={about.text}
               scrollYProgress={scrollYProgress}
-              className="text-base xl:text-lg text-muted-foreground leading-relaxed max-w-prose"
+              className={`${textStyles.body} text-muted-foreground leading-relaxed max-w-prose`}
             />
           </div>
         </div>

@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollRevealText from "./ScrollRevealText";
 import { about } from "@/slices/about/data/about";
+import { textStyles } from "@/slices/hero/utils/textStyles";
 
 export default function AboutSectionUltra() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,21 +40,23 @@ export default function AboutSectionUltra() {
         <div className="grid grid-cols-12 gap-[clamp(2rem,3vw,5rem)] items-start max-w-[clamp(1400px,85vw,2000px)] mx-auto">
           {/* Фото */}
           <motion.div
-          style={{ opacity: photoOpacity, y: photoY }}
-          className="relative col-span-6 overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-2xl 
-                    w-[clamp(800px,40vw,1000px)] h-[clamp(1000px,50vh,1000px)] z-20" >
-              <Image
-                src={about.photo.src}
-                alt={about.photo.alt}
-                fill
-                priority
-                className="object-contain"/>
-            </motion.div>
+            style={{ opacity: photoOpacity, y: photoY }}
+            className="relative col-span-6 overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-2xl 
+                       w-[clamp(800px,40vw,1000px)] h-[clamp(1000px,50vh,1000px)] z-20"
+          >
+            <Image
+              src={about.photo.src}
+              alt={about.photo.alt}
+              fill
+              priority
+              className="object-contain"
+            />
+          </motion.div>
 
           {/* Заголовок + текст */}
           <div className="col-span-6">
             <motion.h2
-              className="text-[clamp(30px,3vw,80px)] font-semibold tracking-tight mb-16"
+              className={`${textStyles.h2} mb-16`}
               style={{ opacity: headingOpacity }}
             >
               {about.heading}
@@ -62,7 +65,7 @@ export default function AboutSectionUltra() {
             <ScrollRevealText
               text={about.text}
               scrollYProgress={scrollYProgress}
-              className="text-[clamp(24px,1.5vw,32px)] text-muted-foreground leading-relaxed max-w-prose whitespace-normal break-words"
+              className={`${textStyles.bodyLarge} text-muted-foreground leading-relaxed max-w-prose whitespace-normal break-words`}
             />
           </div>
         </div>

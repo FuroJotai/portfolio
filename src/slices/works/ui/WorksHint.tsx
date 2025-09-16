@@ -46,7 +46,7 @@ export default function WorksHint() {
           }}
           className="
             fixed z-50 px-3 py-1
-            text-sm 2xl:text-lg 3xl:text-xl 4xl:text-xl 5xl:text-2xl
+            text-sm 2xl:text-lg 3xl:text-2xl 
             text-white bg-black/70 rounded-md
             backdrop-blur-md pointer-events-none
           "

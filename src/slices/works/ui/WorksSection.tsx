@@ -43,13 +43,13 @@ export default function WorksSection() {
   const isLargeHeight = useLargeHeight(1400)
 
   return (
-    <section className="w-full">
+    <section id="works" className="w-full">
       {isMobile && <WorksSectionMobile />}
       {isLaptop && <WorksSectionLaptop />}
       {isDesktop &&
         (isLargeHeight ? <WorksSectionUltra /> : <WorksSectionDesktop />)}
 
-        {isDesktop &&isLargeHeight  &&<WorksHint />}
+        {isDesktop && <WorksHint />}
     </section>
   )
 }

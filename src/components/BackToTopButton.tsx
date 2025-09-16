@@ -7,33 +7,36 @@ export default function BackToTopButton() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const works = document.getElementById("works")
-    const worksBottom = works?.offsetTop! + works?.offsetHeight!
-
     const handleScroll = () => {
       const scrollTop = window.scrollY
-      // 👉 показываем кнопку только если прошли секцию works
-      setVisible(scrollTop > worksBottom)
+      const docHeight = document.body.scrollHeight - window.innerHeight
+      const progress = scrollTop / docHeight
+
+      setVisible(progress >= 0.35) // 👉 показываем после 45% скролла
     }
 
     window.addEventListener("scroll", handleScroll)
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const scrollToHero = () => {
     const hero = document.getElementById("hero")
-    hero?.scrollIntoView({ behavior: "smooth" })
+    if (hero) {
+      hero.scrollIntoView({ behavior: "smooth" })
+    }
   }
 
   return (
     <AnimatePresence>
       {visible && (
         <motion.button
+          key="back-to-top"
           onClick={scrollToHero}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          exit={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.6, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          whileHover={{ opacity: 1, scale: 1.1 }}
           transition={{ duration: 0.3 }}
           className="
             fixed 
@@ -43,7 +46,8 @@ export default function BackToTopButton() {
             w-10 h-10 2xl:w-12 2xl:h-12
             rounded-full bg-white/20 
             flex items-center justify-center 
-            cursor-pointer backdrop-blur-sm z-50
+            cursor-pointer backdrop-blur-sm z-[9999]
+            shadow-lg shadow-blue-500/30
           "
         >
           <svg
