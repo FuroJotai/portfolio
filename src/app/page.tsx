@@ -3,8 +3,8 @@ import Hero from "@/slices/hero/ui/Hero"
 import WorksSection from "@/slices/works/ui/WorksSection"
 import ContactSection from "@/slices/contact/ui/ContactSection"
 import BackToTopButton from "@/components/BackToTopButton"
-import Pricing from "@/slices/prices/ui/Pricing"
 import FooterSection from "@/slices/footer/ui/FooterSection"
+import PricingSection from "@/slices/prices/ui/PricingSection"
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <WorksSection />
       <AboutSection />
-      <Pricing />
+      <PricingSection />
       <ContactSection />
       <BackToTopButton />
       <FooterSection />

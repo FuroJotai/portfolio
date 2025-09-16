@@ -6,6 +6,7 @@ export const textStyles = {
   h3: "font-sora font-medium text-[clamp(22px,3vw,56px)] leading-tight 3xl:text-[64px] 4xl:text-[72px] 5xl:text-[80px] 6xl:text-[96px]",
   h4: "font-sora font-medium text-[clamp(18px,2.5vw,40px)] leading-normal 3xl:text-[48px] 4xl:text-[56px] 5xl:text-[64px] 6xl:text-[72px]",
   h5: "font-sora font-medium text-[clamp(16px,2vw,28px)] leading-normal 3xl:text-[32px] 4xl:text-[36px] 5xl:text-[40px] 6xl:text-[48px]",
+  h6: "font-sora font-medium text-[clamp(14px,1.8vw,22px)] leading-normal 3xl:text-[26px] 4xl:text-[28px] 5xl:text-[30px] 6xl:text-[32px]",
 
   // === Текстовые стили (Inter) ===
   body: "font-inter text-[clamp(14px,1vw,20px)] text-gray-300 leading-relaxed 3xl:text-[22px] 4xl:text-[24px] 5xl:text-[26px] 6xl:text-[28px]",
