@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion"
 import { scrollToSection } from "../utils/scroll"
 import { contactButtonClasses } from "../utils/buttonStyles"
+import { textStyles } from "@/slices/hero/utils/textStyles"
 
 const title = "Across Pixels"
 const subtitle = "creative web studio"
@@ -41,13 +42,13 @@ export default function HeroMobile() {
         <div className="text-lg font-bold">LOGO</div>
         <button
           onClick={() => scrollToSection("contact")}
-          className={`${contactButtonClasses} text-sm px-4 py-2`}
+          className={`${textStyles.body} px-6 py-4`}
         >
           Contact
         </button>
       </header>
 
-      {/* 🔹 Центр: текст */}
+      {/* 🔹 Центр: текст + меню */}
       <div className="flex flex-col items-center justify-center flex-1 gap-10 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Подзаголовок */}
@@ -122,24 +123,25 @@ export default function HeroMobile() {
             </motion.div>
           ))}
         </nav>
-
-        {/* 🔹 Фото + линия снизу */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.9 }}
-          className="relative mt-12 w-full flex justify-center"
-        >
-          <img
-            src="/hero/hero_photo_dt.png"
-            alt="Hero image"
-            className="w-[70%] max-w-[280px] h-auto object-contain drop-shadow-2xl"
-          />
-          {/* Линия по нижней границе фото */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full  h-[2px] bg-white/40" />
-        </motion.div>
       </div>
+
+      {/* 🔹 Фото — отдельный блок ниже */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.9 }}
+        className="relative mt-16 w-full flex justify-center"
+      >
+        <img
+          src="/hero/hero_photo_dt.png"
+          alt="Hero image"
+          className="w-[70%] max-w-[280px] h-auto object-contain drop-shadow-2xl"
+        />
+        {/* Линия по нижней границе фото */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[2px] bg-white/40" />
+      </motion.div>
     </section>
   )
 }
+

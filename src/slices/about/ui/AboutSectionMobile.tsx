@@ -25,7 +25,7 @@ export default function AboutSectionMobile() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-2xl sm:text-3xl font-semibold tracking-tight text-center"
+        className="text-2xl sm:text-3xl font-semibold tracking-tight text-left"
       >
         {about.heading}
       </motion.h2>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import WorksModal from "./WorksModal"
 import { tabs } from "../data/tabs"
 import type { Tab } from "../data/tabs"
+import { textStyles } from "@/slices/hero/utils/textStyles"
 
 // 🔹 Контент аккордеона
 function AccordionItem({
@@ -88,9 +89,9 @@ export default function WorksSectionMobile() {
       className="flex flex-col w-full mt-20 pt-35 px-4 py-12 text-white"
     >
       {/* Заголовок секции */}
-      <h2 className="text-3xl md:text-4xl font-sora font-bold mb-8">
-        My Works
-      </h2>
+      <h2 className={`${textStyles.h3} mb-8`}>
+  My Works
+</h2>
 
       {/* Аккордеон */}
       {tabs.map((tab, i) => {
