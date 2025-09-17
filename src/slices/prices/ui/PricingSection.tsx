@@ -12,7 +12,7 @@ export default function PricingSection() {
       className="
         relative mx-auto 
         max-w-7xl 
-        px-6 mt-10 lg:mt-20 lg:px-8 lg:min-h-screen
+        px-6 mt-8 lg:mt-20 lg:px-8 lg:min-h-screen
         3xl:max-w-[1600px] 4xl:max-w-[1800px] 5xl:max-w-[2000px]
       "
     >
