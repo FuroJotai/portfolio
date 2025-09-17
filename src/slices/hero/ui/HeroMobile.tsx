@@ -47,7 +47,7 @@ export default function HeroMobile() {
       </header>
 
       {/* 🔹 Центр: текст + меню */}
-      <div className="flex flex-col items-center justify-center pt-40 flex-1 gap-10 relative z-10">
+      <div className="flex flex-col items-center justify-center pt-30 flex-1 gap-10 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Подзаголовок */}
           <motion.h2
