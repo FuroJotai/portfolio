@@ -45,7 +45,7 @@ export default function ContactSectionMobile() {
     <section id="contact" ref={ref} className="py-20 mt-55 flex items-center justify-center">
       <motion.div
         style={{ opacity: sectionOpacity }}
-        className="flex flex-col items-center gap-6 w-full px-4"
+        className="flex flex-col items-center  w-full px-4"
       >
         {!submitted ? (
           <>
@@ -69,7 +69,7 @@ export default function ContactSectionMobile() {
                            outline-none focus:border-gray-500 transition-colors"
               />
 
-              <h3 className={`${textStyles.h3} mt-8 `}>let’s create a dream</h3>
+              <h3 className={`${textStyles.h3} mt-4 `}>let’s create a dream</h3>
 
               {/@.+/.test(email) && (
                 <motion.button

@@ -63,12 +63,12 @@ export default function AboutSectionDesktop() {
 
           {/* Заголовок + текст справа */}
           <div className="col-span-7">
-            <motion.h2
+            <motion.h4
               className={`${textStyles.h4} mb-12`}
               style={{ opacity: headingOpacity }}
             >
               {about.heading}
-            </motion.h2>
+            </motion.h4>
 
             <ScrollRevealText
               text={about.text}
