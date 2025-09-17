@@ -41,13 +41,13 @@ export default function HeroMobile() {
         <div className="text-lg font-bold">LOGO</div>
         <button
           onClick={() => scrollToSection("contact")}
-          className={`${textStyles.body} px-4 py-2 border border-white/40 rounded-lg`}>
+          className={`${textStyles.body} px-4 py-2  bg-white/5 border border-white/20 rounded-lg`}>
             Contact me
         </button>
       </header>
 
       {/* 🔹 Центр: текст + меню */}
-      <div className="flex flex-col items-center justify-center flex-1 gap-10 relative z-10">
+      <div className="flex flex-col items-center justify-center pt-40 flex-1 gap-10 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Подзаголовок */}
           <motion.h2
