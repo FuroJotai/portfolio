@@ -86,7 +86,7 @@ export default function WorksSectionMobile() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
-      className="flex flex-col w-full mt-20 px-4 text-white">
+      className="flex flex-col w-full mt-40 px-4 text-white">
 
 
       {/* Заголовок секции */}
