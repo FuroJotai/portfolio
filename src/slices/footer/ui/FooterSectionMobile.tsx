@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 export default function FooterSectionMobile() {
   return (
     <motion.footer
-      className="flex md:hidden flex-col gap-10 px-6 py-12 text-gray-200"
+      className="flex md:hidden flex-col mt-40 gap-10 px-6 py-12 text-gray-200"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

@@ -18,7 +18,7 @@ export default function AboutSectionMobile() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative mx-auto max-w-3xl mt-20 px-6 lg:px-8 py-24 space-y-8"
+      className="relative mx-auto max-w-3xl mt-40 px-6 lg:px-8 py-24 space-y-8"
     >
       {/* Заголовок */}
       <motion.h2

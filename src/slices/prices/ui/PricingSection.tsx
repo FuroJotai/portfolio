@@ -9,7 +9,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="relative mx-auto max-w-7xl px-6 lg:px-8 min-h-screen"
+      className="relative mx-auto max-w-7xl px-6 lg:px-8 mt-40 min-h-screen"
     >
       <div className="pt-32">
         <motion.h3
