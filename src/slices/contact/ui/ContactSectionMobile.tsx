@@ -69,7 +69,7 @@ export default function ContactSectionMobile() {
                            outline-none focus:border-gray-500 transition-colors"
               />
 
-              <h3 className={`${textStyles.h3} mb-8 `}>let’s create a dream</h3>
+              <h3 className={`${textStyles.h3} mt-8 `}>let’s create a dream</h3>
 
               {/@.+/.test(email) && (
                 <motion.button
