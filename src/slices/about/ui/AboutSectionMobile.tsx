@@ -19,7 +19,7 @@ export default function AboutSectionMobile() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative mx-auto max-w-3xl mt-40 px-6 lg:px-8 py-24 border-t border-white"
+      className="relative mx-auto max-w-3xl mt-20 px-6 lg:px-8 py-24"
     >
       {/* Заголовок */}
       <motion.h2
@@ -32,7 +32,7 @@ export default function AboutSectionMobile() {
       </motion.h2>
 
       {/* Фото */}
-      <div className="w-full sm:max-w-lg mx-auto">
+      <div className="w-full sm:max-w-lg mx-auto mb-8">
         <Image
           src={about.photo.src}
           alt={about.photo.alt}
