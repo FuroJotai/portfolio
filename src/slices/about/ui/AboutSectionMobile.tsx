@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { about } from "@/slices/about/data/about";
+import { textStyles } from "@/slices/hero/utils/textStyles";
 
 export default function AboutSectionMobile() {
   const ref = useRef(null);
@@ -18,14 +19,14 @@ export default function AboutSectionMobile() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative mx-auto max-w-3xl mt-65 px-6 lg:px-8 py-24 space-y-8"
+      className="relative mx-auto max-w-3xl mt-55 px-6 lg:px-8 py-24 space-y-8"
     >
       {/* Заголовок */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-2xl sm:text-3xl font-semibold tracking-tight text-center"
+        className={`${textStyles.h2} mb-8 text-center`}
       >
         {about.heading}
       </motion.h2>

@@ -9,11 +9,11 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="relative mx-auto max-w-7xl px-6 lg:px-8 mt-65 min-h-screen"
+      className="relative mx-auto max-w-7xl px-6 lg:px-8 mt-55 min-h-screen"
     >
       <div className="pt-32">
         <motion.h3
-          className={`${textStyles.h3} text-white mb-16 text-center`}
+          className={`${textStyles.h2} text-white mb-8 text-center`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}

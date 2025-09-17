@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
+import { textStyles } from "@/slices/hero/utils/textStyles"
 import emailjs from "@emailjs/browser"
 
 export default function ContactSectionMobile() {
@@ -41,16 +42,16 @@ export default function ContactSectionMobile() {
   }, [submitted])
 
   return (
-    <section id="contact" ref={ref} className="py-20 mt-65 flex items-center justify-center">
+    <section id="contact" ref={ref} className="py-20 mt-55 flex items-center justify-center">
       <motion.div
         style={{ opacity: sectionOpacity }}
         className="flex flex-col items-center gap-6 w-full px-4"
       >
         {!submitted ? (
           <>
-            <p className="text-xl font-bold text-center">
+            <h3 className={`${textStyles.h3} mb-8 text-center`}>
               Book your free consultation
-            </p>
+            </h3>
 
             <form
               onSubmit={handleSubmit}
@@ -68,7 +69,7 @@ export default function ContactSectionMobile() {
                            outline-none focus:border-gray-500 transition-colors"
               />
 
-              <span className="text-lg">let’s create a dream</span>
+              <h3 className={`${textStyles.h3} mb-8 `}>let’s create a dream</h3>
 
               {/@.+/.test(email) && (
                 <motion.button
