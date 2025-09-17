@@ -15,7 +15,7 @@ export default function ContactSectionMobile() {
   const [submitted, setSubmitted] = useState(false)
   const [email, setEmail] = useState("")
 
-  const sectionOpacity = useTransform(scrollYProgress, [0.3, 0.6], [0, 1])
+  const sectionOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
