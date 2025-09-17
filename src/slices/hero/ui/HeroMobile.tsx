@@ -2,7 +2,6 @@
 
 import { motion, type Variants } from "framer-motion"
 import { scrollToSection } from "../utils/scroll"
-import { contactButtonClasses } from "../utils/buttonStyles"
 import { textStyles } from "@/slices/hero/utils/textStyles"
 
 const title = "Across Pixels"
@@ -42,9 +41,8 @@ export default function HeroMobile() {
         <div className="text-lg font-bold">LOGO</div>
         <button
           onClick={() => scrollToSection("contact")}
-          className={`${textStyles.body} px-6 py-4`}
-        >
-          Contact
+          className={`${textStyles.body} px-4 py-2 border border-white/40 rounded-lg`}>
+            Contact me
         </button>
       </header>
 
