@@ -1,83 +1,86 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import ScrollRevealText from "./ScrollRevealText";
+import { motion, useInView } from "framer-motion";
+import { useMemo, useRef } from "react";
 import { about } from "@/slices/about/data/about";
 import { textStyles } from "@/slices/hero/utils/textStyles";
 
 export default function AboutSectionDesktop() {
   const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { margin: "-20% 0px", amount: 0.2, once: true });
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
+  const paragraphs = useMemo(
+    () => {
+      const rawParagraphs = about.text
+        .split("\n")
+        .map((paragraph) => paragraph.trim())
+        .filter(Boolean);
 
-  // линия
-  const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const lineOpacity = useTransform(scrollYProgress, [0.95, 1], [1, 0]);
+      if (rawParagraphs.length <= 2) {
+        return rawParagraphs;
+      }
 
-  // заголовок
-  const headingOpacity = useTransform(scrollYProgress, [0.18, 0.22], [0, 1]);
-
-  // фото
-  const photoOpacity = useTransform(scrollYProgress, [0.1, 0.2], [0, 1]);
-  const photoY = useTransform(scrollYProgress, [0.1, 0.2], [24, 0]);
+      return [
+        rawParagraphs.slice(0, 2).join(" "),
+        rawParagraphs.slice(2).join(" "),
+      ];
+    },
+    []
+  );
 
   return (
     <section
       id="about"
       ref={sectionRef}
-      className="relative mx-auto max-w-7xl px-6 lg:px-8 min-h-[250vh]"
+      className="relative mx-auto max-w-7xl px-6 lg:px-8 py-32"
     >
-      {/* Линия фиксирована сверху */}
       <motion.div
-        aria-hidden
-        className="fixed top-12 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-foreground/40 to-transparent z-40"
-        style={{
-          scaleX: lineScaleX,
-          originX: 0.5,
-          opacity: lineOpacity,
-        }}
-      />
+        initial={{ opacity: 0, y: 32 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="grid grid-cols-12 gap-12 items-start"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+          className="col-span-5 overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-lg"
+        >
+          <Image
+            src={about.photo.src}
+            alt={about.photo.alt}
+            width={about.photo.width}
+            height={about.photo.height}
+            priority
+            className="object-cover w-full max-h-[80vh]"
+          />
+        </motion.div>
 
-      {/* Общий sticky-контейнер */}
-      <div className="sticky top-32">
-        <div className="grid grid-cols-12 gap-12 items-start">
-          {/* Фото слева */}
-          <motion.div
-            style={{ opacity: photoOpacity, y: photoY }}
-            className="col-span-5 overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-lg"
+        <div className="col-span-7 space-y-8">
+          <motion.h4
+            className={`${textStyles.h4}`}
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.25 }}
           >
-            <Image
-              src={about.photo.src}
-              alt={about.photo.alt}
-              width={about.photo.width}
-              height={about.photo.height}
-              priority
-              className="object-cover w-full max-h-[80vh]"
-            />
+            {about.heading}
+          </motion.h4>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.35 }}
+            className={`${textStyles.body} text-muted-foreground leading-relaxed max-w-prose space-y-6`}
+          >
+            {paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </motion.div>
-
-          {/* Заголовок + текст справа */}
-          <div className="col-span-7">
-            <motion.h4
-              className={`${textStyles.h4} mb-12`}
-              style={{ opacity: headingOpacity }}
-            >
-              {about.heading}
-            </motion.h4>
-
-            <ScrollRevealText
-              text={about.text}
-              scrollYProgress={scrollYProgress}
-              className={`${textStyles.body} text-muted-foreground leading-relaxed max-w-prose`}
-            />
-          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
+
+

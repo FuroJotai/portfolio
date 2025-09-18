@@ -22,8 +22,8 @@ export default function ContactSection() {
   const createX = useTransform(scrollYProgress, [0.3, 0.45], [0, 200])
 
   const inputOpacity = useTransform(scrollYProgress, [0.4, 0.55], [0, 1])
-  const dreamOpacity = useTransform(scrollYProgress, [0.55, 0.7], [0, 1])
-  const phraseOpacity = useTransform(scrollYProgress, [0.55, 0.7], [0, 1])
+  const dreamOpacity = useTransform(scrollYProgress, [0.45, 0.6], [0, 1])
+  const phraseOpacity = useTransform(scrollYProgress, [0.45, 0.6], [0, 1])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -54,7 +54,7 @@ export default function ContactSection() {
   }, [submitted])
 
   return (
-    <section id="contact" ref={ref} className="relative h-[2500px] mt-20">
+    <section id="contact" ref={ref} className="relative h-[1800px] mt-20">
       <div className="sticky top-5 h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-[clamp(24px,3vw,72px)] w-full max-w-screen-3xl px-[clamp(16px,4vw,64px)]">
           {!submitted ? (

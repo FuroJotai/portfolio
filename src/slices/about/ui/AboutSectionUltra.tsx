@@ -1,75 +1,85 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import ScrollRevealText from "./ScrollRevealText";
+import { motion, useInView } from "framer-motion";
+import { useMemo, useRef } from "react";
 import { about } from "@/slices/about/data/about";
 import { textStyles } from "@/slices/hero/utils/textStyles";
 
 export default function AboutSectionUltra() {
   const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { margin: "-25% 0px", amount: 0.25, once: true });
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
+  const paragraphs = useMemo(
+    () => {
+      const rawParagraphs = about.text
+        .split("\n")
+        .map((paragraph) => paragraph.trim())
+        .filter(Boolean);
 
-  // анимации
-  const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const lineOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0]);
-  const headingOpacity = useTransform(scrollYProgress, [0.18, 0.22], [0, 1]);
-  const photoOpacity = useTransform(scrollYProgress, [0.1, 0.2], [0, 1]);
-  const photoY = useTransform(scrollYProgress, [0.1, 0.2], [24, 0]);
+      if (rawParagraphs.length <= 2) {
+        return rawParagraphs;
+      }
+
+      return [
+        rawParagraphs.slice(0, 2).join(" "),
+        rawParagraphs.slice(2).join(" "),
+      ];
+    },
+    []
+  );
 
   return (
     <section
       id="about"
       ref={sectionRef}
-      className="relative px-[clamp(2rem,4vw,6rem)] min-h-[350vh]"
+      className="relative px-[clamp(2rem,4vw,6rem)] py-[clamp(6rem,10vw,12rem)]"
     >
-      {/* Линия */}
       <motion.div
-        aria-hidden
-        className="fixed top-16 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-foreground/40 to-transparent z-40"
-        style={{ scaleX: lineScaleX, originX: 0.5, opacity: lineOpacity }}
-      />
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="grid grid-cols-12 gap-[clamp(2rem,3vw,5rem)] items-start max-w-[clamp(1400px,85vw,2000px)] mx-auto"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          className="relative col-span-6 overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-2xl w-[clamp(800px,40vw,1000px)] h-[clamp(1000px,50vh,1000px)] z-20"
+        >
+          <Image
+            src={about.photo.src}
+            alt={about.photo.alt}
+            fill
+            priority
+            className="object-contain"
+          />
+        </motion.div>
 
-      {/* Sticky блок */}
-      <div className="sticky top-[clamp(6rem,10vh,10rem)]">
-        <div className="grid grid-cols-12 gap-[clamp(2rem,3vw,5rem)] items-start max-w-[clamp(1400px,85vw,2000px)] mx-auto">
-          {/* Фото */}
-          <motion.div
-            style={{ opacity: photoOpacity, y: photoY }}
-            className="relative col-span-6 overflow-hidden rounded-3xl ring-1 ring-white/10 shadow-2xl 
-                       w-[clamp(800px,40vw,1000px)] h-[clamp(1000px,50vh,1000px)] z-20"
+        <div className="col-span-6 space-y-10">
+          <motion.h2
+            className={`${textStyles.h2} mb-8`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           >
-            <Image
-              src={about.photo.src}
-              alt={about.photo.alt}
-              fill
-              priority
-              className="object-contain"
-            />
+            {about.heading}
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            className={`${textStyles.bodyLarge} text-muted-foreground leading-relaxed max-w-prose whitespace-normal break-words space-y-6`}
+          >
+            {paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </motion.div>
-
-          {/* Заголовок + текст */}
-          <div className="col-span-6">
-            <motion.h2
-              className={`${textStyles.h2} mb-16`}
-              style={{ opacity: headingOpacity }}
-            >
-              {about.heading}
-            </motion.h2>
-
-            <ScrollRevealText
-              text={about.text}
-              scrollYProgress={scrollYProgress}
-              className={`${textStyles.bodyLarge} text-muted-foreground leading-relaxed max-w-prose whitespace-normal break-words`}
-            />
-          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
+
+
