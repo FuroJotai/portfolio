@@ -75,7 +75,7 @@ export const tabs: Tab[] = [
   previewImg: "/works/preview_creativity.png",
   projects: [
     {
-      img: "/works/redesign_1.png", // 👉 полный скрин
+      img: "/works/redesign_1_preview.png", // 👉 полный скрин
       url: "/works/redesign_1.png", // 👉 ведём на картинку
       desc: "Redesign of a corporate website: improved navigation, updated design system, and optimized performance.",
     },

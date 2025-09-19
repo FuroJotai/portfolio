@@ -46,8 +46,8 @@ export default function WorksSectionUltra() {
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className={`flex border-r border-white/10 ${
               isActive ? "flex-[5]" : "w-20"
-            }`}
-          >
+            }`}> 
+            
             {/* Sidebar */}
             <motion.button
               layout

@@ -5,9 +5,9 @@ export const footerLinks = {
     { label: "CONTACT ME", href: "#contact" },
   ],
   socials: [
-    { label: "INSTAGRAM", href: "https://instagram.com" },
-    { label: "LINKEDIN", href: "https://linkedin.com" },
-    { label: "GITHUB", href: "https://github.com" },
+    { label: "INSTAGRAM", href: "https://www.instagram.com/welldee/" },
+    { label: "LINKEDIN", href: "https://www.linkedin.com/in/valerii-zaichenko/" },
+    { label: "GITHUB", href: "https://github.com/FuroJotai" },
   ],
   contact: {
     email: "wellestonia@gmail.com",
