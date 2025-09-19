@@ -9,6 +9,11 @@ import PricingSection from "@/slices/prices/ui/PricingSection"
 export default function Home() {
   return (
     <main>
+      {/* transp block for not adjusting each 
+      container margins and paddings*/}
+
+      <div className="h-[160px] md:hidden" />
+
       <Hero />
       <WorksSection />
       <AboutSection />

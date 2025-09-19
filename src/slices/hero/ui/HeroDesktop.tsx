@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion, type Variants } from "framer-motion"
 import { scrollToSection } from "../utils/scroll"
 import { contactButtonClasses } from "../utils/buttonStyles"
@@ -38,36 +39,45 @@ export default function HeroDesktop() {
     <section className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden">
       {/* 🔹 Верхняя панель */}
                 <header
-                  className="fixed top-0 left-0 w-full 
-                            flex items-center justify-between 
-                            px-6 py-3 
-                            bg-white/5 backdrop-blur-md 
-                            border-b border-white/5
-                            z-50"
-                >
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="cursor-pointer font-bold leading-none 
-                              text-[clamp(20px,1.8vw,48px)]"
-                  >
-                    LOGO
-                  </motion.div>
+                      className="fixed top-0 left-0 w-full 
+                                flex items-center justify-between 
+                                px-6 py-3 
+                                bg-white/3 backdrop-blur-md 
+                                border-b border-white/5
+                                z-50"
+                    >
+                      {/* 🔹 Лого */}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="cursor-pointer leading-none"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                      >
+                        <Image
+                            src="/hero/across_pixels.png"
+                            alt="Across Pixels Logo"
+                            width={100}  
+                            height={30}
+                            className="w-[clamp(60px,5vw,120px)] h-auto"
+                            />
+                      </motion.div>
 
-                  <motion.button
-                    onClick={() => scrollToSection("contact", true)}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.4 }}
-                    className={`${contactButtonClasses} 
-                                text-[clamp(14px,1.2vw,28px)] 
-                                px-[clamp(14px,1.5vw,36px)] 
-                                py-[clamp(5px,0.6vw,15px)]`}
-                  >
-                    Contact me
-                  </motion.button>
-                </header>
+                      {/* 🔹 Кнопка */}
+                      <motion.button
+                        onClick={() => scrollToSection("contact", true)}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className={`${contactButtonClasses} 
+                                    text-[clamp(14px,1.1vw,28px)] 
+                                    px-[clamp(14px,1.5vw,36px)] 
+                                    py-[clamp(5px,0.6vw,15px)]`}
+                      >
+                        Contact me
+                      </motion.button>
+                    </header>
+
 
 
       {/* 🔹 Центр: текст */}

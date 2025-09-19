@@ -18,6 +18,9 @@ const sora = Sora({
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "My portfolio website",
+  icons: {
+    icon: "/across_pixels_favicon.png",
+  },
 }
 
 // ✅ новый экспорт viewport отдельно

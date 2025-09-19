@@ -2,7 +2,7 @@
 
 import { motion, type Variants } from "framer-motion"
 import { scrollToSection } from "../utils/scroll"
-import { textStyles } from "@/slices/hero/utils/textStyles"
+import Image from "next/image"
 
 const title = "Across Pixels"
 const subtitle = "creative web studio"
@@ -41,18 +41,26 @@ export default function HeroMobile() {
         className="fixed top-0 left-0 w-full 
                    flex items-center justify-between 
                    px-4 py-3 
-                   bg-white/5 backdrop-blur-md 
+                   bg-white/3 backdrop-blur-md 
                    border-b border-white/10
                    z-50"
       >
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="text-lg font-bold cursor-pointer"
-        >
-          LOGO
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="cursor-pointer leading-none"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <Image
+                src="/hero/across_pixels.png"
+                alt="Across Pixels Logo"
+                width={100}  
+                height={30}
+                priority
+                className="w-[clamp(50px,6vw,90px)] h-auto"
+              />
         </motion.div>
+
 
         <motion.button
           onClick={() => scrollToSection("contact")}
