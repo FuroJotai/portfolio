@@ -58,8 +58,10 @@ export default function WorksSectionUltra() {
               <span className="absolute top-19 left-1/2 -translate-x-1/2 text-[clamp(20px,2vw,40px)] font-sora font-bold leading-none">
                 {tab.number}
               </span>
-              <span className={`absolute bottom-16 left-1/2 -translate-x-1/2 
-              ${textStyles.h3} tracking-widest [writing-mode:vertical-rl] whitespace-nowrap`}>
+              <span
+                className={`absolute bottom-16 left-1/2 -translate-x-1/2 
+              ${textStyles.h3} tracking-widest [writing-mode:vertical-rl] whitespace-nowrap`}
+              >
                 {tab.label}
               </span>
             </motion.button>
@@ -101,26 +103,34 @@ export default function WorksSectionUltra() {
 
                   {/* Превью справа */}
                   <motion.div
-  variants={line}
-  onClick={() => setIsModalOpen(true)}
-  className="w-[clamp(1200px,36vw,1600px)] h-[clamp(800px,24vw,1000px)] 
-             self-start ml-auto rounded-xl shadow-lg cursor-pointer 
-             border border-white/20 transition-colors duration-500 ease-in-out
-             hover:border-white/25 overflow-hidden"
->
-  <motion.div
-    whileHover={{ scale: 0.95 }}
-    transition={{ duration: 0.4, ease: "easeInOut" }}
-    className="w-full h-full"
-  >
-    <img
-      src={tab.previewImg || "/works/placeholder.png"}
-      alt="Preview"
-      className="w-full h-full object-contain"
-    />
-  </motion.div>
-</motion.div>
+                    variants={line}
+                    onClick={() => setIsModalOpen(true)}
+                    className="relative w-[clamp(1200px,36vw,1600px)] h-[clamp(800px,24vw,1000px)] 
+                               self-start ml-auto rounded-xl shadow-lg cursor-pointer 
+                               border border-white/20 transition-colors duration-500 ease-in-out
+                               hover:border-white/25 overflow-hidden"
+                  >
+                    {/* бейдж-наклейка */}
+                    <div
+                      className="absolute top-8 right-[-100px] w-[300px] bg-white/5 border border-white 
+                                 text-white text-center text-2xl font-semibold py-3 rotate-45 shadow-md 
+                                 pointer-events-none select-none"
+                    >
+                      Explore
+                    </div>
 
+                    <motion.div
+                      whileHover={{ scale: 0.95 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="w-full h-full"
+                    >
+                      <img
+                        src={tab.previewImg || "/works/placeholder.png"}
+                        alt="Preview"
+                        className="w-full h-full object-contain"
+                      />
+                    </motion.div>
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>

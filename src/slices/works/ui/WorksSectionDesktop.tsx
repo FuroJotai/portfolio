@@ -102,25 +102,31 @@ export default function WorksSection() {
                   </motion.div>
 
                   {/* Картинка справа */}
-                  <motion.div
-                    variants={line}
-                    onClick={() => setIsModalOpen(true)}
-                    className="w-[clamp(500px,36vw,1100px)] h-[clamp(300px,24vw,700px)] self-start rounded-xl shadow-lg cursor-pointer 
-                               border border-white/20 transition-colors duration-500 ease-in-out
-                               hover:border-white/25 overflow-hidden"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 0.95 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="w-full h-full"
-                    >
-                      <img
-                        src={tab.previewImg || "/works/placeholder.png"}
-                        alt="Preview"
-                        className="w-full h-full object-contain"
-                      />
-                    </motion.div>
-                  </motion.div>
+<motion.div
+  variants={line}
+  onClick={() => setIsModalOpen(true)}
+  className="relative w-[clamp(500px,36vw,1100px)] h-[clamp(300px,24vw,700px)] self-start rounded-xl shadow-lg cursor-pointer 
+             border border-white/20 transition-colors duration-500 ease-in-out
+             hover:border-white/25 overflow-hidden"
+>
+  <div className="absolute top-6 right-[-80px] w-[250px] bg-white/5  border border-white text-white text-center
+                  text-lg font-semibold py-2 rotate-45 shadow-md pointer-events-none select-none">
+  Explore
+</div>
+
+  <motion.div
+    whileHover={{ scale: 0.95 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    className="w-full h-full"
+  >
+    <img
+      src={tab.previewImg || "/works/placeholder.png"}
+      alt="Preview"
+      className="w-full h-full object-contain"
+    />
+  </motion.div>
+</motion.div>
+
                 </motion.div>
               )}
             </AnimatePresence>
