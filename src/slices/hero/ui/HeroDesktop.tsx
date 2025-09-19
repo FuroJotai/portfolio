@@ -37,30 +37,38 @@ export default function HeroDesktop() {
   return (
     <section className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden">
       {/* 🔹 Верхняя панель */}
-      <header className="flex items-center justify-between relative z-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="cursor-pointer font-bold leading-none 
-                     text-[clamp(20px,1.8vw,48px)] z-15"
-        >
-          LOGO
-        </motion.div>
+                <header
+                  className="fixed top-0 left-0 w-full 
+                            flex items-center justify-between 
+                            px-6 py-3 
+                            bg-white/5 backdrop-blur-md 
+                            border-b border-white/5
+                            z-50"
+                >
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="cursor-pointer font-bold leading-none 
+                              text-[clamp(20px,1.8vw,48px)]"
+                  >
+                    LOGO
+                  </motion.div>
 
-        <motion.button
-          onClick={() => scrollToSection("contact", true)}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className={`${contactButtonClasses} z-20
-                      text-[clamp(14px,1.2vw,28px)] 
-                      px-[clamp(14px,1.5vw,36px)] 
-                      py-[clamp(6px,0.8vw,18px)]`}
-        >
-          Contact me
-        </motion.button>
-      </header>
+                  <motion.button
+                    onClick={() => scrollToSection("contact", true)}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.4 }}
+                    className={`${contactButtonClasses} 
+                                text-[clamp(14px,1.2vw,28px)] 
+                                px-[clamp(14px,1.5vw,36px)] 
+                                py-[clamp(5px,0.6vw,15px)]`}
+                  >
+                    Contact me
+                  </motion.button>
+                </header>
+
 
       {/* 🔹 Центр: текст */}
       <div className="flex flex-1 items-center justify-start relative">

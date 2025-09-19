@@ -17,7 +17,7 @@ export default function WorksHint() {
         if (entry.isIntersecting && !shownRef.current) {
           shownRef.current = true // 👉 больше не показываем
           setShow(true)
-          setTimeout(() => setShow(false), 6000)
+          setTimeout(() => setShow(false), 4000)
         }
       },
       { threshold: 0.3 }
@@ -47,7 +47,7 @@ export default function WorksHint() {
           }}
           className="
             fixed z-50 px-3 py-1
-            text-sm 2xl:text-lg 3xl:text-2xl 
+            text-sm 2xl:text-base 3xl:text-2xl 
             text-white bg-black/70 rounded-md
             backdrop-blur-md pointer-events-none
           "
