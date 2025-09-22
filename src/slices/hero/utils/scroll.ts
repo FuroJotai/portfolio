@@ -10,7 +10,7 @@ export const scrollToSection = (id: string, special = false) => {
   if (id === "contact") {
     if (isMobile) {
       // На мобиле скроллим чуть выше (фиксированный navbar)
-      target -= 80
+      target -= 120
     } else {
       // На десктопе центрируем
       target += section.offsetHeight * 0.55

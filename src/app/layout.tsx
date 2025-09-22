@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect } from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, Sora } from "next/font/google"
 import "./globals.css"
@@ -34,6 +37,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // 🔹 Сбрасываем авто-восстановление скролла
+  useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual"
+    }
+  }, [])
+
   return (
     <html lang="en" className="dark">
       <body
