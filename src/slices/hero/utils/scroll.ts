@@ -4,12 +4,23 @@ export const scrollToSection = (id: string, special = false) => {
   if (!section) return
 
   const isMobile = window.innerWidth < 768
-
   let target = section.getBoundingClientRect().top + window.scrollY
 
-  // 👇 На мобиле без добавки, на десктопе оставляем 0.55
-  if (id === "contact" && !isMobile) {
-    target += section.offsetHeight * 0.55
+  // 🔹 Contact
+  if (id === "contact") {
+    if (isMobile) {
+      // На мобиле скроллим чуть выше (фиксированный navbar)
+      target -= 80
+    } else {
+      // На десктопе центрируем
+      target += section.offsetHeight * 0.55
+    }
+  }
+
+  // 🔹 Works
+  if (id === "works" && isMobile) {
+    // На мобиле тоже нужен оффсет вверх
+    target -= 120
   }
 
   window.scrollTo({
