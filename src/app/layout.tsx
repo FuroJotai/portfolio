@@ -1,10 +1,8 @@
-"use client"
-
-import { useEffect } from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, Sora } from "next/font/google"
 import "./globals.css"
 import SpotlightBackground from "@/components/SpotlightBackground"
+import DisableScrollRestore from "@/components/DisableScrollRestore"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +24,6 @@ export const metadata: Metadata = {
   },
 }
 
-// ✅ новый экспорт viewport отдельно
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -37,21 +34,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // 🔹 Сбрасываем авто-восстановление скролла
-  useEffect(() => {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual"
-    }
-  }, [])
-
   return (
     <html lang="en" className="dark">
       <body
         className={`${inter.variable} ${sora.variable} antialiased bg-background text-foreground`}
       >
-        <SpotlightBackground /> {/* ✅ глобальный фон */}
-
-        {/* 🔹 Глобальный контейнер */}
+        <SpotlightBackground />
+        <DisableScrollRestore /> {/* 🔹 вот тут включаем сброс скролла */}
         <div className="mx-auto w-full max-w-none 3xl:max-w-wide 4xl:max-w-ultra ">
           {children}
         </div>
