@@ -1,14 +1,14 @@
 // src/slices/hero/utils/scroll.ts
-
-// 🔹 универсальный скролл
-export const scrollToSection = (id: string, _special = false) => {
+export const scrollToSection = (id: string, special = false) => {
   const section = document.getElementById(id)
   if (!section) return
 
+  const isMobile = window.innerWidth < 768
+
   let target = section.getBoundingClientRect().top + window.scrollY
 
-  if (id === "contact") {
-    // Nudge contact section so the form centers better on screen
+  // 👇 На мобиле без добавки, на десктопе оставляем 0.55
+  if (id === "contact" && !isMobile) {
     target += section.offsetHeight * 0.55
   }
 
