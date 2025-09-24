@@ -9,5 +9,5 @@ export const contactButtonClasses = `
   transition-colors duration-300
   cursor-pointer
   hover:bg-[#0a0f1c]/20
-  hover:border-white/35
+  hover:border-white/45
 `

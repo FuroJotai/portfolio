@@ -59,12 +59,17 @@ export const tabs: Tab[] = [
         desc: `This website is my portfolio, designed and developed with Next.js, React, Tailwind and Framer Motion.
                 It reflects my focus on clean UI, smooth animations, and fully responsive layouts — crafted with the same care I bring to every project.`,
       },
+      {
+        img: "/works/clean_code_2.png",
+        url: "https://shmoov.vercel.app/",
+        desc: "Dance school management app — an online platform that helps school owners organize their student database and schedule with ease, while giving dancers a simple way to book classes, check availability, and find upcoming lessons nearby."
+      },
     ],
   },
   {
   id: "creativity",
   number: "03",
-  label: "Redesign",
+  label: "Re/design",
   title: ["Refreshing outdated websites"],
   desc: [
     "I help businesses transform outdated websites into modern, user-friendly platforms that build trust and convert better.",

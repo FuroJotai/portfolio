@@ -6,25 +6,33 @@ import { motion, AnimatePresence } from "framer-motion"
 export default function WorksHint() {
   const [show, setShow] = useState(false)
   const [pos, setPos] = useState({ x: 0, y: 0 })
-  const shownRef = useRef(false) // 👉 флаг, показывали ли подсказку
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const works = document.getElementById("works")
-    if (!works || shownRef.current) return
+    if (!works) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !shownRef.current) {
-          shownRef.current = true // 👉 больше не показываем
+        if (entry.isIntersecting) {
+          // когда входим в секцию — показать и запустить таймер
           setShow(true)
-          setTimeout(() => setShow(false), 4000)
+          if (timeoutRef.current) clearTimeout(timeoutRef.current)
+          timeoutRef.current = setTimeout(() => setShow(false), 4000)
+        } else {
+          // когда выходим из секции — сразу скрыть и сбросить таймер
+          setShow(false)
+          if (timeoutRef.current) clearTimeout(timeoutRef.current)
         }
       },
       { threshold: 0.3 }
     )
 
     observer.observe(works)
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
   }, [])
 
   useEffect(() => {

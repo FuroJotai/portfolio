@@ -40,6 +40,7 @@ export default function WorksModal({ isOpen, onClose, projects, tabId }: WorksMo
               max-w-3xl 2xl:max-w-[1400px] 4xl:max-w-[4000px] 5xl:max-w-[2400px]
               bg-neutral-900/95 rounded-xl border border-gray-700 shadow-xl 
               p-6 sm:p-8 2xl:p-12 4xl:p-20
+              max-h-[90vh] overflow-y-auto
             "
           >
             {/* кнопка закрытия */}
