@@ -33,7 +33,7 @@ export default function AboutSectionDesktop() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative mx-auto max-w-7xl px-6 lg:px-8 py-32"
+      className="relative mx-auto max-w-7xl px-6 lg:px-8 py-10 lg:py-0 lg:mb-28"
     >
       <motion.div
         initial={{ opacity: 0, y: 32 }}

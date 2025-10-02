@@ -35,7 +35,7 @@ export default function WorksSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.35 }}
-      className="relative flex w-full h-[clamp(600px,95vh,800px)] text-white pt-20"
+      className="relative flex w-full h-[clamp(600px,95vh,800px)] lg:mb-28 text-white pt-20"
     >
       {tabs.map((tab, i) => {
         const isActive = i === active

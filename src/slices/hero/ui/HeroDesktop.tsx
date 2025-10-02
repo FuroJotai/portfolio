@@ -36,7 +36,7 @@ const menuItems = [
 
 export default function HeroDesktop() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-between px-6 py-4 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-between px-6 py-4 lg:mb-28 overflow-hidden">
       {/* 🔹 Верхняя панель */}
                 <header
                       className="fixed top-0 left-0 w-full 
