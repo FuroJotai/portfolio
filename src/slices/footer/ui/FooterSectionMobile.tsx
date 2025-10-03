@@ -1,58 +1,63 @@
 "use client"
 
-import FooterLink from "./FooterLink"
 import { footerLinks } from "../data/footerLinks"
 import { motion } from "framer-motion"
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"
 
 export default function FooterSectionMobile() {
   return (
     <motion.footer
-      className="flex md:hidden flex-col mt-40 gap-10 px-6 pt-6 lg:pt-12 text-gray-200"
+      className="flex md:hidden flex-col mt-20 gap-8 px-6 pt-6 text-gray-200"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
       {/* Nav */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3 text-base">
         {footerLinks.nav.map((link) => (
-          <div
+          <a
             key={link.label}
-            className="[&>a]:inline-block [&>a]:w-max [&>a>span]:max-w-[100%]"
+            href={link.href}
+            className="hover:text-gray-100 transition-colors"
           >
-            <FooterLink {...link} />
-          </div>
+            {link.label}
+          </a>
         ))}
       </div>
 
       {/* Socials */}
-      <div className="flex flex-col gap-4">
-        {footerLinks.socials.map((link) => (
-          <div
-            key={link.label}
-            className="[&>a]:inline-block [&>a]:w-max [&>a>span]:max-w-[100%]"
-          >
-            <FooterLink {...link} />
-          </div>
-        ))}
+      <div className="flex gap-6 text-xl">
+        <a href={footerLinks.socials[0].href} target="_blank" rel="noopener noreferrer">
+          <FaInstagram className="w-6 h-6 hover:text-gray-100 transition-colors" />
+        </a>
+        <a href={footerLinks.socials[1].href} target="_blank" rel="noopener noreferrer">
+          <FaLinkedin className="w-6 h-6 hover:text-gray-100 transition-colors" />
+        </a>
+        <a href={footerLinks.socials[2].href} target="_blank" rel="noopener noreferrer">
+          <FaGithub className="w-6 h-6 hover:text-gray-100 transition-colors" />
+        </a>
       </div>
 
-      {/* Contact (без underline) */}
-      <div className="flex flex-col gap-3">
-        <a href={`mailto:${footerLinks.contact.email}`} className="hover:text-teal-300">
+      {/* Contact */}
+      <div className="flex flex-col gap-2 text-base">
+        <a
+          href={`mailto:${footerLinks.contact.email}`}
+          className="hover:text-gray-100 transition-colors"
+        >
           {footerLinks.contact.email.toUpperCase()}
         </a>
-        <a href={`tel:${footerLinks.contact.phone}`} className="hover:text-teal-300">
+        <a
+          href={`tel:${footerLinks.contact.phone}`}
+          className="hover:text-gray-100 transition-colors"
+        >
           {footerLinks.contact.phone}
         </a>
       </div>
 
-      {/* Author (без underline) */}
-      <div className="flex flex-col gap-2">
-        <span className="block text-sm font-semibold text-gray-400">
-          {footerLinks.author.role}
-        </span>
-        <span className="block text-xl font-bold">
+      {/* Author */}
+      <div className="flex flex-col gap-1 text-base">
+        <span className="font-semibold text-gray-400">
           {footerLinks.author.name}
         </span>
       </div>

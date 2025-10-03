@@ -12,7 +12,7 @@ export default function BackToTopButton() {
       const docHeight = document.body.scrollHeight - window.innerHeight
       const progress = scrollTop / docHeight
 
-      setVisible(progress >= 0.20) // 👉 показываем после 20% скролла
+      setVisible(progress >= 0.40) // 👉 показываем после 20% скролла
     }
 
     window.addEventListener("scroll", handleScroll)

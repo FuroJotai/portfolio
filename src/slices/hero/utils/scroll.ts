@@ -1,26 +1,15 @@
-// src/slices/hero/utils/scroll.ts
-export const scrollToSection = (id: string, special = false) => {
+export const scrollToSection = (id: string) => {
   const section = document.getElementById(id)
   if (!section) return
 
   const isMobile = window.innerWidth < 768
+  const navOffset = isMobile ? 120 : 100 // navbar height offset
+
   let target = section.getBoundingClientRect().top + window.scrollY
 
-  // 🔹 Contact
-  if (id === "contact") {
-    if (isMobile) {
-      // На мобиле скроллим чуть выше (фиксированный navbar)
-      target -= 120
-    } else {
-      // На десктопе центрируем
-      target += section.offsetHeight * 0.55
-    }
-  }
-
-  // 🔹 Works
-  if (id === "works" && isMobile) {
-    // На мобиле тоже нужен оффсет вверх
-    target -= 120
+  // Apply offset for all sections except "works" on desktop
+  if (id !== "works" || isMobile) {
+    target -= navOffset
   }
 
   window.scrollTo({

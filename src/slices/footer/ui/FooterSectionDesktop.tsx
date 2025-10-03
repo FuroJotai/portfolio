@@ -1,70 +1,70 @@
 "use client"
 
-import FooterLink from "./FooterLink"
 import { footerLinks } from "../data/footerLinks"
 import { motion } from "framer-motion"
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"
 
 export default function FooterSectionDesktop() {
   return (
-    <motion.section
+    <motion.footer
       id="footer"
-      className="hidden md:flex flex-col h-[500px]
+      className="w-full 
            px-[clamp(12px,1vw,24px)] 
-           pt-[clamp(32px,1vw,48px)] pb-[clamp(12px,1vw,32px)]
+           py-[clamp(20px,2vw,40px)]
            text-gray-200 border-t border-[rgba(16,185,129,0.5)]"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      {/* Внутренний контейнер: три зоны, равные отступы */}
-      <div className="w-full max-w-[2900px] mx-auto flex flex-col h-full justify-between">
-        
-        {/* === Верхний контейнер (навигация + контакты) === */}
-        <div className="flex justify-between w-full">
-          {/* Навигация слева */}
-          <div className="flex flex-col gap-2 text-[clamp(16px,1.2vw,40px)]">
-            {footerLinks.nav.map((link) => (
-              <FooterLink key={link.label} {...link} />
-            ))}
-          </div>
-
-          {/* Контакты справа */}
-          <div className="flex flex-col text-right gap-1 text-[clamp(16px,1.2vw,40px)]">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-3 items-start">
+        {/* Left: navigation links (column) */}
+        <div className="flex flex-col gap-2 text-[clamp(14px,1vw,20px)]">
+          {footerLinks.nav.map((link) => (
             <a
-              href={`mailto:${footerLinks.contact.email}`}
+              key={link.label}
+              href={link.href}
               className="hover:text-gray-100 transition-colors"
             >
-              {footerLinks.contact.email.toUpperCase()}
+              {link.label}
             </a>
-            <a
-              href={`tel:${footerLinks.contact.phone}`}
-              className="hover:text-gray-100 transition-colors"
-            >
-              {footerLinks.contact.phone}
-            </a>
-          </div>
+          ))}
         </div>
 
-        {/* === Средний контейнер (соцсети) === */}
-        <div className="flex justify-between w-full text-[clamp(16px,1.2vw,40px)]">
-          <FooterLink {...footerLinks.socials[0]} /> {/* Instagram */}
-          <div className="pr-[2%]">
-            <FooterLink {...footerLinks.socials[1]} /> {/* LinkedIn */}
+        {/* Center: social icons (row) + name below */}
+        <div className="flex flex-col items-center gap-3 text-[clamp(14px,1vw,20px)]">
+          <div className="flex gap-6">
+            <a href={footerLinks.socials[0].href} target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="w-6 h-6 hover:text-gray-100 transition-colors" />
+            </a>
+            <a href={footerLinks.socials[1].href} target="_blank" rel="noopener noreferrer">
+              <FaLinkedin className="w-6 h-6 hover:text-gray-100 transition-colors" />
+            </a>
+            <a href={footerLinks.socials[2].href} target="_blank" rel="noopener noreferrer">
+              <FaGithub className="w-6 h-6 hover:text-gray-100 transition-colors" />
+            </a>
           </div>
-          <FooterLink {...footerLinks.socials[2]} /> {/* GitHub */}
-        </div>
-
-        {/* === Нижний контейнер (автор) === */}
-        <div className="flex flex-col items-center text-center">
-          <span className="text-[clamp(14px,1vw,48px)] font-semibold text-gray-400">
-            {footerLinks.author.role}
-          </span>
-          <span className="text-[clamp(32px,5vw,100px)] font-bold leading-tight">
+          <span className="font-semibold text-gray-400">
             {footerLinks.author.name}
           </span>
         </div>
+
+        {/* Right: contact info (column) */}
+        <div className="flex flex-col text-right gap-1 text-[clamp(14px,1vw,20px)] leading-tight">
+          <a
+            href={`mailto:${footerLinks.contact.email}`}
+            className="hover:text-gray-100 transition-colors"
+          >
+            {footerLinks.contact.email.toUpperCase()}
+          </a>
+          <a
+            href={`tel:${footerLinks.contact.phone}`}
+            className="hover:text-gray-100 transition-colors"
+          >
+            {footerLinks.contact.phone}
+          </a>
+        </div>
       </div>
-    </motion.section>
+    </motion.footer>
   )
 }
