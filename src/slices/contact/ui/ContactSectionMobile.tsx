@@ -62,7 +62,7 @@ export default function ContactSectionMobile() {
       >
         {!submitted ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <h2 className={`${textStyles.h4} text-center mb-4`}>
+            <h2 className={`${textStyles.h2} text-center mb-4`}>
               Get in touch
             </h2>
 
